@@ -17,7 +17,7 @@ class VisitablePlace(models.Model):
 class PlacePosts(models.Model):
     place = models.ForeignKey(VisitablePlace, on_delete=models.CASCADE)
     text = models.TextField()
-    photo = models.ImageField(upload_to=f'places/posts/photos', null=True, blank=True)
+    photo = models.ImageField(upload_to='places/posts/photos', null=True, blank=True)
     video = models.FileField(upload_to='places/posts/videos', null=True, blank=True)
     
 class Comment(models.Model):
