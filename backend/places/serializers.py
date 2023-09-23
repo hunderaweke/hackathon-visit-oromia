@@ -2,20 +2,20 @@ from rest_framework import serializers
 from .models import *
 
 class VisitablePlaceSerializer(serializers.ModelSerializer):
-    name = serializers.CharField(max_length=255)
+    name = serializers.CharField()
     description = serializers.TextField()
-    regione = serializers.CharField(max_length=255)
-    latin = serializers.CharField(max_length=255)
+    regione = serializers.CharField()
+    latin = serializers.CharField()
     zotude = serializers.FloatField()
     longitude = serializers.FloatField()
-    category = serializers.CharField(max_length=255)
+    category = serializers.CharField()
 
 
 class PlacePostsSerializer(serializers.ModelSerializer):
     place = VisitablePlaceSerializer()
     text =  serializers.TextField()
-    photo = serializers.ImageField(upload_to='places/posts/photos', null=True, blank=True)
-    video = serializers.FileField(upload_to='places/posts/videos', null=True, blank=True)
+    photo = serializers.ImageField()
+    video = serializers.FileField()
     
 
 
