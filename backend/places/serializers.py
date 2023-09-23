@@ -1,9 +1,10 @@
 from rest_framework import serializers
 from .models import *
+from accounts.serializers import CustomUserSerializer
 
 class VisitablePlaceSerializer(serializers.ModelSerializer):
     name = serializers.CharField()
-    description = serializers.TextField()
+    description = serializers.CharField()
     regione = serializers.CharField()
     latin = serializers.CharField()
     zotude = serializers.FloatField()
@@ -13,15 +14,15 @@ class VisitablePlaceSerializer(serializers.ModelSerializer):
 
 class PlacePostsSerializer(serializers.ModelSerializer):
     place = VisitablePlaceSerializer()
-    text =  serializers.TextField()
+    text =  serializers.CharField()
     photo = serializers.ImageField()
     video = serializers.FileField()
     
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    user = serializers.CustomUser()
-    text =  serializers.TextField()
-    photo = serializers.ImageField(upload_to=f'places/posts/photos', null=True, blank=True)
-    commented_user = serializers.DateTimeField(auto_now_add=True)
+    user = CustomUserSerializer()
+    text =  serializers.CharField()
+    photo = serializers.ImageField()
+    commented_user = serializers.DateTimeField()
 
