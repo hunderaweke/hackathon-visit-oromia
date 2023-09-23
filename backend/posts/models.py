@@ -1,5 +1,6 @@
 from django.db import models
-
+from accounts.models import CustomUser
+from places.models import VisitablePlace
 # Create your models here.
 
 
