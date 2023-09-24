@@ -1,7 +1,8 @@
+import { Nav, NavbarBrand } from "react-bootstrap";
 export const Header = () => {
   return (
-    <div>
-        <h2>Header</h2>
-    </div>
-  )
-}
+    <header>
+      <Nav>sdkjfhsdkjfhksdjh</Nav>
+    </header>
+  );
+};
