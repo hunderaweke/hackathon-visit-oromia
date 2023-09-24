@@ -15,10 +15,10 @@ export const Header = () => {
             <Navbar.Toggle aria-controls="navbar-nav" />
             <Navbar.Collapse id="navbar-nav">
               <Nav
-                className={`w-100 d-flex justify-content-center  ${styles.navLink}`}
+                className={`w-100 d-flex justify-content-between  ${styles.navLink}`}
               >
                 <div
-                  className={`w-lg-75  d-lg-flex justify-content-lg-center  ${styles.navLink}`}
+                  className={`w-lg-75  d-lg-flex justify-content-lg-center mx-lg-auto   ${styles.navLink}`}
                 >
                   <Nav.Link className="flex-lg-item" href="/">
                     Home
