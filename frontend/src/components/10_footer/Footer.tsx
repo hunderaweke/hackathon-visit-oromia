@@ -6,12 +6,12 @@ import {
   faLinkedinIn,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
-
+import { Container } from "react-bootstrap";
 function Footer() {
   return (
     <>
-      <footer className={`bg-dark`}>
-        <div className="container-fluid bg-light-s py-5">
+      <footer className={`bg-dark  text-white`}>
+        <Container fluid className=" py-5">
           <div className="container-md">
             <div className="row">
               <div className="col-12 col-md-3 my-3">
@@ -91,7 +91,7 @@ function Footer() {
               </span>
             </div>
           </div>
-        </div>
+        </Container>
       </footer>
     </>
   );
