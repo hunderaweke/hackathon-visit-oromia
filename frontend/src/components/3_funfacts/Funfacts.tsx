@@ -6,7 +6,7 @@ function Funfacts() {
   return (
     <>
       <section
-        className={`container-fluid ${styles.container} bg-primary py-5`}
+        className={`container-fluid ${styles.container} d-flex align-items-center py-5`}
       >
         <Container className="text-center">
           <div className="mb-5">
@@ -20,7 +20,7 @@ function Funfacts() {
               <CountUp
                 className="h1"
                 useEasing={true}
-                duration={120}
+                duration={20}
                 enableScrollSpy
                 end={1000}
               />
@@ -29,7 +29,7 @@ function Funfacts() {
             <div>
               <CountUp
                 className="h1"
-                duration={120}
+                duration={20}
                 useEasing={true}
                 enableScrollSpy
                 end={1000}
@@ -39,7 +39,7 @@ function Funfacts() {
             <div>
               <CountUp
                 className="h1"
-                duration={120}
+                duration={20}
                 useEasing={true}
                 enableScrollSpy
                 end={1000}
