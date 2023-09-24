@@ -1,11 +1,11 @@
-import { useState } from 'react'
 import './App.css'
+import { Layout } from './pages/Layout'
 
 function App() {
 
   return (
     <>
-      <h2>let the hachthon begin</h2>
+      <Layout />
     </>
   )
 }
