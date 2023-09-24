@@ -2,8 +2,7 @@ import { FieldValues, useForm } from 'react-hook-form'
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-// import logo from '../../assets/images/logo.png'
-// import './style.css'
+import logo from '../../assets/logo.png'
 
 const schema = z.object({
   email: z.string({ required_error: "Email is Required"})
@@ -41,13 +40,13 @@ const Login = () => {
         }}
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div className=" mt-3 mb-5 d-flex justify-content-center align-items-center">
-          {/* <img src={logo} alt="AfriHub" style={{ width: "3rem" }} /> */}
-          <span className="text-light mx-4 fs-3">Asrat Furniture</span>
+        <div className=" mt-3 mb-4 d-flex justify-content-center align-items-center">
+          <img src={logo} alt="AfriHub" style={{ width: "3rem" }} />
+          <span className="text-light mx-4 fs-3">Imaltuu</span>
         </div>
         <div className="mb-3 mt-3">
           <label htmlFor="email" className="form-label fs-6 text-light">
-            Email / Phone Number:
+            Email:
           </label>
           <input
             type="email"
