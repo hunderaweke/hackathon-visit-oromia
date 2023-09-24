@@ -65,7 +65,7 @@ function Footer() {
             <hr />
             <div className="d-flex flex-column-reverse flex-md-row justify-content-between">
               <span className="my-3 my-md-0">
-                @RoofMaster, All rights reserved
+                @Imaltuu, All rights reserved
               </span>
               <span className="my-4 my-md-0">
                 <FontAwesomeIcon

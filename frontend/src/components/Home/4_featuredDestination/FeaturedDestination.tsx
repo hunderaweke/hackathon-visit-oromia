@@ -4,12 +4,14 @@ import "swiper/css/bundle";
 
 import { useMediaQuery } from "@mui/material";
 
-import destination_1 from '../../../public/images/destination_1.jpg'
-import destination_2 from '../../../public/images/destination_2.png'
-import destination_3 from '../../../public/images/destination_3.jpg'
-import destination_4 from '../../../public/images/destination_4.jpg'
-import destination_5 from '../../../public/images/destination_5.png'
-import destination_6 from '../../../public/images/destination_6.jpg'
+import styles from './feaatured.module.css'
+
+import destination_1 from '../../../../public/images/destination_1.jpg'
+import destination_2 from '../../../../public/images/destination_2.png'
+import destination_3 from '../../../../public/images/destination_3.jpg'
+import destination_4 from '../../../../public/images/destination_4.jpg'
+import destination_5 from '../../../../public/images/destination_5.jpg'
+import destination_6 from '../../../../public/images/destination_6.jpg'
 
 interface props{
   profile: string
@@ -19,8 +21,8 @@ interface props{
 
 function TeamCard({profile, name, role}: props) {
   return (
-    <div className="col px-4">
-      <div className="bg-primay p-3 bg-light rounded-2">
+    <div className="col px-1">
+      <div className="bg-primay p-2 bg-light rounded-2">
         <img src={profile} alt="Profile" className="w-100 rounded-3" />
         <h5 className="my-2">{ name }</h5>
         <h5 className="orange fw-bold">{role}</h5>
@@ -34,13 +36,13 @@ const FeaturedDestination = () => {
   const widthLg = useMediaQuery("(min-width: 992px)");
   const widthMd = useMediaQuery("(min-width: 768px)");
   widthLg
-    ? (slidesPerViewCount = 3)
+    ? (slidesPerViewCount = 4)
     : widthMd
     ? (slidesPerViewCount = 2)
     : (slidesPerViewCount = 1);
 
   return (
-    <div className="containet-fluid bg-dark-blue py-5">
+    <div className={`containet-fluid bg-dark-blue py-5 ${styles.featured}`}>
       <Swiper
         modules={[Autoplay, Pagination]}
         spaceBetween={30}
@@ -50,11 +52,11 @@ const FeaturedDestination = () => {
         pagination={{ clickable: true }}
         className="container-sm py-5"
       >
-        <SwiperSlide className="bg-primay">
-          <TeamCard name="Adonis Roberts" profile={destination_1} role="CEO & Co-Founder"/>
+        <SwiperSlide>
+          <TeamCard name="Yayo Biodiversity Reserve" profile={destination_1} role="Ilu Abba Boor"/>
         </SwiperSlide>
         <SwiperSlide>
-          <TeamCard name="Luis Lindesy" profile={destination_2} role="System Developer"/>
+          <TeamCard name="Bale National Park" profile={destination_2} role="System Developer"/>
         </SwiperSlide>
         <SwiperSlide>
           <TeamCard name="Adonis Roberts" profile={destination_3} role="Softwere Engineer"/>
@@ -66,7 +68,7 @@ const FeaturedDestination = () => {
           <TeamCard name="Adonis Roberts" profile={destination_5} role="CTO,The Business Inc."/>
         </SwiperSlide>
         <SwiperSlide>
-          <TeamCard name="Luis Lindesy" profile={destination_6} role="Marketing Manager"/>
+          <TeamCard name="Geda System" profile={destination_6} role="Marketing Manager"/>
         </SwiperSlide>
         <div slot="container-start" className="mb-5">
           <h3 className="text-left px-5 text-dark"><b>Featured</b> Destination</h3>

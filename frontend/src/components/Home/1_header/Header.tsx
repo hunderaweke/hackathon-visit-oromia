@@ -23,7 +23,7 @@ export const Header = () => {
                   <Nav.Link className="flex-lg-item" href="/">
                     Home
                   </Nav.Link>
-                  <Nav.Link className="flex-item" href="#">
+                  <Nav.Link className="flex-item" href="/places">
                     Places
                   </Nav.Link>
                   <Nav.Link className="flex-item" href="#">
