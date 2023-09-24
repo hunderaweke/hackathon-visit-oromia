@@ -14,7 +14,7 @@ class VisitablePlaceSerializer(serializers.ModelSerializer):
 class PlacePostsSerializer(serializers.ModelSerializer):
     place = VisitablePlaceSerializer()
     text =  serializers.TextField()
-    photo = serializers.ImageField(upload_to=f'places/posts/photos', null=True, blank=True)
+    photo = serializers.ImageField(upload_to='places/posts/photos', null=True, blank=True)
     video = serializers.FileField(upload_to='places/posts/videos', null=True, blank=True)
     
 
