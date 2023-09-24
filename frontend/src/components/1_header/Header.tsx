@@ -18,7 +18,7 @@ export const Header = () => {
                 className={`w-100 d-flex justify-content-center  ${styles.navLink}`}
               >
                 <div
-                  className={`w-75  d-flex justify-content-center  ${styles.navLink}`}
+                  className={`w-lg-75  d-lg-flex justify-content-lg-center  ${styles.navLink}`}
                 >
                   <Nav.Link className="flex-lg-item" href="/">
                     Home
