@@ -33,7 +33,7 @@ class HotelSerializer(serializers.ModelSerializer):
     name = serializers.CharField()
     latitude = serializers.FloatField()
     longtude =  serializers.FloatField()
-    description = serializers.TextField()
+    description = serializers.CharField()
     photo = serializers.ImageField()
     
    
