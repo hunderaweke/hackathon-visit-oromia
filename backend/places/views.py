@@ -30,6 +30,11 @@ class PlacePostsView(APIView):
 class PlaceStoriesView(APIView):
     def get(self, request,**kwargs):
         id = self.kwargs.get('id')
-        stories = Pla
+        stories = VisitorStory.objects.all().filter(place_id = id)
+        return Response(stories, status=status.HTTP_200_OK)
+    
+class PlaceCommentsView(APIView):
+    def get(self, request, **kwargs):
+        id = self.kwargs.get('id')
         
-
+        
