@@ -2,7 +2,6 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import { useNavigate } from "react-router";
 import styles from "./header.module.css";
 export const Header = () => {
-
   const navigation = useNavigate();
 
   return (
@@ -16,24 +15,24 @@ export const Header = () => {
             <Navbar.Toggle aria-controls="navbar-nav" />
             <Navbar.Collapse id="navbar-nav">
               <Nav
-                className={`w-100 d-flex justify-content-center  ${styles.navLink}`}
+                className={`w-100 d-flex justify-content-between  ${styles.navLink}`}
               >
                 <div
-                  className={`w-75  d-flex justify-content-center  ${styles.navLink}`}
+                  className={`w-lg-75  d-lg-flex justify-content-lg-center mx-lg-auto   ${styles.navLink}`}
                 >
                   <Nav.Link className="flex-lg-item" href="/">
                     Home
                   </Nav.Link>
-                  <Nav.Link className="flex-lg-item" href="#">
+                  <Nav.Link className="flex-item" href="#">
                     Places
                   </Nav.Link>
-                  <Nav.Link className="flex-lg-item" href="#">
+                  <Nav.Link className="flex-item" href="#">
                     Story
                   </Nav.Link>
-                  <Nav.Link className="flex-lg-item" href="#">
+                  <Nav.Link className="flex-item" href="#">
                     Blabla
                   </Nav.Link>
-                  <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                  <form className="col-12 flex-item col-lg-auto mb-3 mb-lg-0 me-lg-3">
                     <input
                       type="search"
                       className="form-control form-control-dark"
