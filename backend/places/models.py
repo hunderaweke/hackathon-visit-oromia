@@ -26,5 +26,12 @@ class Comment(models.Model):
     text = models.TextField()
     commented_date = models.DateTimeField(auto_now_add=True)
     
+class Hotel(models.Model):
+    name = models.CharField(max_length=100)
+    latitude = models.FloatField()
+    longtude =  models.FloatField()
+    description = models.TextField()
+    photo = models.ImageField(upload_to='hotels/images')
+    
     
     

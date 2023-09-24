@@ -9,7 +9,6 @@ from django.shortcuts import get_object_or_404
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from .models import CustomUser
-
 from .serializers import CustomUserSerializer
 
 # Create your views here.
@@ -37,12 +36,8 @@ class UserCreationView(APIView):
                 return Response(data=token, status=status.HTTP_201_CREATED)
             else:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
-            
-    def get(self,request,  **kwargs):
-        id = self.kwargs.get('id')
-        user = get_object_or_404(CustomUser, id=id)
-        
-
+                
+                
 
 class UserLoginView(APIView):
     def post(self, request):
@@ -60,5 +55,3 @@ class UserLoginView(APIView):
             return Response(token, status=status.HTTP_200_OK)
         
         return Response(data='invalid credentials', status=status.HTTP_401_UNAUTHORIZED)
-
-        

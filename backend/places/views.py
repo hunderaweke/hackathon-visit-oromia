@@ -8,7 +8,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from django.shortcuts import get_object_or_404
 from rest_framework_simplejwt.tokens import RefreshToken
 from .serializers import VisitablePlaceSerializer
-from .models import VisitablePlace, PlacePosts, Comment
+from .models import VisitablePlace, PlacePosts, Comment, Hotel
 from posts.models import VisitorStory, StoryImage, StoryVideo
 
 from django.shortcuts import get_object_or_404
@@ -65,7 +65,16 @@ class TouristSiteCommentsView(APIView):
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 class NearByHotelsView(APIView):
-    def get(self, request, **kwargs):
+    def get(self, request):
+        id = request.request.query_params.get('place_id')
+        latitude = request.request.query_params.get('latitude')
+        longtude = request.request.query_params.get('longtude')
+        place = get_object_or_404(VisitablePlace, id=id)
+        place_latitude = place.latitude
+        place_longtude = place.longitude
+        hotels = Hotel.objects.all()
+        
+        
         # Implement the logic for retrieving nearby hotels
         return Response({'data': 'Nearby hotels'})
     
