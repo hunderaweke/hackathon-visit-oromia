@@ -36,9 +36,9 @@ function Footer() {
                   <li className="my-3">
                     <b>Services</b>
                   </li>
-                  <li>Roof Replacement</li>
-                  <li>Roof Repair</li>
-                  <li>Roof Maintenance</li>
+                  <li>Top Destinations</li>
+                  <li>Nearby Sites</li>
+                  <li>Top</li>
                 </ul>
               </div>
               <div className="col-12 col-md-2">
