@@ -29,3 +29,11 @@ class CommentSerializer(serializers.ModelSerializer):
     photo = serializers.ImageField()
     commented_user = serializers.DateTimeField()
 
+class HotelSerializer(serializers.ModelSerializer):
+    name = serializers.CharField()
+    latitude = serializers.FloatField()
+    longtude =  serializers.FloatField()
+    description = serializers.TextField()
+    photo = serializers.ImageField()
+    
+   
