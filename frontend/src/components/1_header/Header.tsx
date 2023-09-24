@@ -6,7 +6,7 @@ export const Header = () => {
 
   return (
     <header>
-      <Container fluid>
+      <Container fluid className={`${styles.header} py-lg-2`}>
         <Container>
           <Navbar expand="lg">
             <Navbar.Brand className={`${styles.navBrand}`}>
