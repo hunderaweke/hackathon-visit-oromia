@@ -91,7 +91,7 @@ const Signup = () => {
             className="form-control"
             id="conpassword"
             placeholder="Confirm Password"
-            // required
+            // required field
             {...register("conpassword")}
           />
           {errors.conpassword && <p className="text-danger"> {errors.conpassword.message} </p>}
