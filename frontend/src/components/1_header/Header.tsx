@@ -1,13 +1,17 @@
 import { Navbar, Nav, Container } from "react-bootstrap";
+import { useNavigate } from "react-router";
 import styles from "./header.module.css";
 export const Header = () => {
+
+  const navigation = useNavigate();
+
   return (
     <header>
       <Container fluid>
         <Container>
           <Navbar expand="lg">
             <Navbar.Brand className={`${styles.navBrand}`}>
-              <Nav.Link href="#home">Imaltuu</Nav.Link>
+              <Nav.Link href="/">Imaltuu</Nav.Link>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="navbar-nav" />
             <Navbar.Collapse id="navbar-nav">
@@ -17,7 +21,7 @@ export const Header = () => {
                 <div
                   className={`w-75  d-flex justify-content-center  ${styles.navLink}`}
                 >
-                  <Nav.Link className="flex-lg-item" href="#">
+                  <Nav.Link className="flex-lg-item" href="/">
                     Home
                   </Nav.Link>
                   <Nav.Link className="flex-lg-item" href="#">
@@ -43,12 +47,18 @@ export const Header = () => {
                   <button
                     type="button"
                     className={`btn btn-outline-dark mx-2 ${styles.loginSignup}`}
+                    onClick={() => {
+                      navigation("/login");
+                    }}
                   >
                     Login
                   </button>
                   <button
                     type="button"
                     className={`btn btn-warning mx-2 ${styles.loginSignup}`}
+                    onClick={() => {
+                      navigation("/signup");
+                    }}
                   >
                     Sign-up
                   </button>
