@@ -9,3 +9,5 @@ class CustomUserSerializer(serializers.ModelSerializer):
     last_name = serializers.CharField()
     nation = serializers.CharField()
     password  = serializers.CharField()
+
+    
