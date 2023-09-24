@@ -5,7 +5,7 @@ export const Header = () => {
   const navigation = useNavigate();
 
   return (
-    <header className={`${styles.header} py-lg-2 fixed-top `}>
+    <header className={`${styles.header} py-lg-2 fixed-top bg-white`}>
       <Container fluid>
         <Container>
           <Navbar expand="lg">
