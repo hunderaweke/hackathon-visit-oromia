@@ -1,22 +1,34 @@
 from rest_framework import serializers
-from .models import *
+from .models import VisitorStory, StoryImage, StoryVideo
 
-class VisitorStorySerializers(serializers.ModelSerializer):
-    user = serializers.CustomUser() 
-    place = serializers.VisitablePlace()
-    caption = serializers.TextField(null=True, blank=True)
-    date_posted = serializers.DateTimeField(auto_now_add=True)
-    
+class StoryImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = StoryImage
+        fields = '__all__'
 
+class StoryVideoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = StoryVideo
+        fields = '__all__'
 
-class StoryImageSerializers(serializers.ModelSerializer):
-    image = serializers.ImageField(upload_to='stories/images')
-    story = serializers.VisitorStory()
-      
+class VisitorStorySerializer(serializers.ModelSerializer):
+    images = StoryImageSerializer(many=True)
+    videos = StoryVideoSerializer(many=True)
 
+    class Meta:
+        model = VisitorStory
+        fields = ['id', 'user', 'place', 'caption', 'date_posted', 'images', 'videos']
 
+    def create(self, validated_data):
+        images_data = validated_data.pop('images', [])
+        videos_data = validated_data.pop('videos', [])
 
-class StoryVideoSerializers(serializers.ModelSerializer):
-    video = serializers.FileField(upload_to='stories/videos')
-    story = serializers.VisitorStory()
-    
+        story = VisitorStory.objects.create(**validated_data)
+
+        for image_data in images_data:
+            StoryImage.objects.create(story=story, **image_data)
+
+        for video_data in videos_data:
+            StoryVideo.objects.create(story=story, **video_data)
+
+        return story

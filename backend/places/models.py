@@ -21,6 +21,7 @@ class PlacePosts(models.Model):
     video = models.FileField(upload_to='places/posts/videos', null=True, blank=True)
     
 class Comment(models.Model):
+    place = models.ForeignKey(VisitablePlace, on_delete=models.CASCADE, null=True, blank=True)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     text = models.TextField()
     commented_date = models.DateTimeField(auto_now_add=True)
