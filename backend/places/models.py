@@ -5,12 +5,10 @@ class VisitablePlace(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
     regione = models.CharField(max_length=255)
-    latin = models.CharField(max_length=255)
-    zotude = models.FloatField()
+    latitude = models.CharField(max_length=255)
     longitude = models.FloatField()
     category = models.CharField(max_length=255)
-
-
+    
     def __str__(self):
         return self.name
 
