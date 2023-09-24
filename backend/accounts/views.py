@@ -10,7 +10,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 
 from .models import CustomUser
 
-from .serializers import *
+from .serializers import CustomUserSerializer
 
 # Create your views here.
 
@@ -23,7 +23,7 @@ class UserCreationView(APIView):
             user = CustomUser.objects.get(email=email)
             return Response(data='The user with this email is already registered.', status=status.HTTP_400_BAD_REQUEST)
         except CustomUser.DoesNotExist:
-            serializer = UserCreationSerializer(data=data)
+            serializer = CustomUserSerializer(data=data)
             if serializer.is_valid():
                 user = serializer.save()
                 
