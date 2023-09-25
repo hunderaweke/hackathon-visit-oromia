@@ -1,17 +1,20 @@
 import PLaceCard from "../components/Places/PlaceCard/PLaceCard";
 // import place from "../../public/images/destination_1.jpg";
 import axios from "axios";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 const Places = () => {
-  const [place,setPlace] = useState('');
-  useEffect(()=>{try{
-      axios.get("http://192.168.60.185:5000/places/get_tourist_sites/")
-      .then((res)=>{
-        console.log(res.data)
-      })
-    }catch(error){
-      console.log(error)
-    }},[])
+  const [place, setPlace] = useState("");
+  useEffect(() => {
+    try {
+      axios
+        .get("http://192.168.60.185:5000/places/get_tourist_sites/")
+        .then((res) => {
+          console.log(res.data);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
   return (
     <>
       <div className="container py-5 my-5">
@@ -23,13 +26,20 @@ const Places = () => {
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
-
       </div>
       <div className="container">
         <div className="d-flex flex-wrap justify-content-center">
           <PLaceCard
             title="Bale Mountains"
-            img={'sjhfsjfkdsf'}
+            img={"sjhfsjfkdsf"}
+            description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio,
+              praesentium."
+            distance="5Km"
+            url="/place/detail"
+          />
+          <PLaceCard
+            title="Bale Mountains"
+            img={"sjhfsjfkdsf"}
             description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio,
               praesentium."
             distance="5Km"
@@ -37,7 +47,7 @@ const Places = () => {
           />
           <PLaceCard
             title="Bale Mountains"
-            img={'sjhfsjfkdsf'}
+            img={"sjhfsjfkdsf"}
             description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio,
               praesentium."
             distance="5Km"
@@ -45,7 +55,7 @@ const Places = () => {
           />
           <PLaceCard
             title="Bale Mountains"
-            img={'sjhfsjfkdsf'}
+            img={"sjhfsjfkdsf"}
             description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio,
               praesentium."
             distance="5Km"
@@ -53,7 +63,7 @@ const Places = () => {
           />
           <PLaceCard
             title="Bale Mountains"
-            img={'sjhfsjfkdsf'}
+            img={"sjhfsjfkdsf"}
             description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio,
               praesentium."
             distance="5Km"
@@ -61,7 +71,7 @@ const Places = () => {
           />
           <PLaceCard
             title="Bale Mountains"
-            img={'sjhfsjfkdsf'}
+            img={"sjhfsjfkdsf"}
             description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio,
               praesentium."
             distance="5Km"
@@ -69,23 +79,15 @@ const Places = () => {
           />
           <PLaceCard
             title="Bale Mountains"
-            img={'sjhfsjfkdsf'}
+            img={"sjhfsjfkdsf"}
             description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio,
               praesentium."
             distance="5Km"
             url="/'sjhfsjfkdsf'/detail"
-          />
+          />useState
           <PLaceCard
             title="Bale Mountains"
-            img={'sjhfsjfkdsf'}
-            description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio,
-              praesentium."
-            distance="5Km"
-            url="/'sjhfsjfkdsf'/detail"
-          />
-          <PLaceCard
-            title="Bale Mountains"
-            img={'sjhfsjfkdsf'}
+            img={"sjhfsjfkdsf"}
             description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio,
               praesentium."
             distance="5Km"
