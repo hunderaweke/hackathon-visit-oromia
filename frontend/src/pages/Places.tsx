@@ -12,7 +12,7 @@
 // =======
 import PLaceCard from "../components/Places/PlaceCard/PLaceCard";
 import place from "../../public/images/destination_1.jpg";
-
+import GoogleReactMap from 'google-map-react/dist/index.js';
 const Places = () => {
   return (
     <>
@@ -25,17 +25,10 @@ const Places = () => {
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
+
       </div>
       <div className="container">
         <div className="d-flex flex-wrap justify-content-center">
-          <PLaceCard
-            title="Bale Mountains"
-            img={place}
-            description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio,
-              praesentium."
-            distance="5Km"
-            url="/place/detail"
-          />
           <PLaceCard
             title="Bale Mountains"
             img={place}

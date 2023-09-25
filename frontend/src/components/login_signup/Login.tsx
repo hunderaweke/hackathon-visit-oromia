@@ -1,36 +1,49 @@
-import { FieldValues, useForm } from 'react-hook-form'
+import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from 'axios';
-import logo from '../../assets/logo.png'
+import axios from "axios";
+import logo from "../../assets/logo.png";
+import { useNavigate } from "react-router-dom";
+
 
 const schema = z.object({
-  email: z.string({ required_error: "Email is Required"})
-          .email({ message: "Invalid email address"  })
-          .min(4, { message: "Must be at least 4 characters" }),
-  password: z.string({ required_error: "Password Must be Filled" })
-  .min(8, {message: "Password is at Least 8 charactera"})
-})
+  email: z
+  .string({ required_error: "Email is Required" })
+  .email({ message: "Invalid email address" })
+  .min(4, { message: "Must be at least 4 characters" }),
+  password: z.string({ required_error: "Password Must be Filled" }),
+  // .min(8, {message: "Password is at Least 8 charactera"})
+});
 
 type FormData = z.infer<typeof schema>;
 
 const Login = () => {
-
-  const { 
-    register, 
-    handleSubmit, 
-    formState: { errors }
+  const navigatation = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
-  const onSubmit = (data: FieldValues) =>{
+  const onSubmit = (data: FieldValues) => {
     console.log(data);
-    axios.post()
-  }
+    try {
+      axios
+        .post("http://192.168.60.185:5000/accounts/login/", data)
+        .then((res) => {
+          console.log(res.data);
+          navigatation('/places');
+          localStorage.setItem("refresh", res.data.refresh);
+        });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div
       className="container-fluid d-flex justify-content-center align-items-center bg"
-      style={{height: "100vh"}}
+      style={{ height: "100vh" }}
     >
       <form
         method="POST"
@@ -55,10 +68,12 @@ const Login = () => {
             id="email"
             placeholder="Enter email"
             // required
-            {...register('email')}
+            {...register("email")}
           />
           {/* {errors.email && <p className="text-danger"> {errors.email.required_error} </p>} */}
-          {errors.email && <p className="text-danger"> {errors.email.message} </p>}
+          {errors.email && (
+            <p className="text-danger"> {errors.email.message} </p>
+          )}
         </div>
         <div className="mb-3 mt-3">
           <label htmlFor="password" className="form-label fs-6 text-light">
@@ -72,7 +87,9 @@ const Login = () => {
             // required
             {...register("password")}
           />
-          {errors.password && <p className="text-danger"> {errors.password.message} </p>}
+          {errors.password && (
+            <p className="text-danger"> {errors.password.message} </p>
+          )}
         </div>
         <div className="mt-3 mb-3 d-flex">
           <p className="text-light ">Do not have account ? </p>
@@ -81,14 +98,14 @@ const Login = () => {
           </a>
         </div>
         <button
-        type='submit'
+          type="submit"
           className="btn w-100 border-primary rounded-5 text-light mt-3"
         >
-            Login
+          Login
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
