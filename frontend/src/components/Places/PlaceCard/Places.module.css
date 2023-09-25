@@ -1,0 +1,12 @@
+.card{
+    min-width: 20rem !important;
+    background-color: rgb(235, 235, 235);
+}
+.cardImg{
+    border-radius: 0.5rem;
+}
+.cardDistance{
+    color: #3366ff;
+}
+
+

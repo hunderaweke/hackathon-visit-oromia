@@ -1,9 +1,12 @@
 import "swiper/css/bundle";
+import { useNavigate } from "react-router";
 
 import './hero.css'
 
 function HeroContent() {
-  return(<div
+  const navigation = useNavigate();
+  return(
+  <div
     className="contain hero d-flex"
     style={{
       minHeight: "calc(100vh - calc(2 * clamp(0.3rem, 0.3rem + 0.9vw, 1rem)))",
@@ -19,7 +22,11 @@ function HeroContent() {
                consectetur earum. Aperiam quam natus ducimus.
             </p>
           </div>
-          <button className="btn my-5 text-white reques-button">
+          <button className="btn my-5 text-white reques-button"
+          onClick={() => {
+            navigation("/signup");
+          }}
+          >
             Join Us Now
           </button>
         </div>
