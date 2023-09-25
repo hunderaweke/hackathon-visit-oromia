@@ -15,7 +15,7 @@ from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.permissions import AllowAny
 # Create your views here.
-from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.parsers import MultiPartParser, FormParser, FileUploadParser
 
 
 class GetUserView(generics.ListAPIView):
@@ -70,12 +70,12 @@ class UserLoginView(APIView):
         
         return Response(data='invalid login credentials', status=status.HTTP_404_NOT_FOUND)
 
+
 class VisitorProfileView(TokenObtainPairView,APIView):
-    
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
-    parser_classes = [MultiPartParser, FormParser]
-    
+    parser_classes = [MultiPartParser, FormParser, FileUploadParser]
+
     def get(self, request):
         user = request.user
         profile = get_object_or_404(Visitor, user_id=user.id)
@@ -86,7 +86,7 @@ class VisitorProfileView(TokenObtainPairView,APIView):
         data['profile']['password'] = ''
         data['user'] = userializer.data
         return Response(data)
-    
+
     def post(self, request):
         user = request.user
         data = request.data.copy()
@@ -94,5 +94,5 @@ class VisitorProfileView(TokenObtainPairView,APIView):
         
         if serializer.is_valid():
             serializer.save(user=user)
-            return Response()
-        return Response({'data':serializer.errors})
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response({'data': serializer.errors})

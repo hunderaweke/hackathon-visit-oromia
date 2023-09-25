@@ -11,5 +11,6 @@ urlpatterns = [
     path('get_nearby_tourist_places/', views.NearbyTouristPlacesView.as_view(), name='nearby_places'),
     path('site_recommendation/', views.SiteReccomendationView.as_view(), name='site_recommendation'),
     path('damage_recomendation', views.DamageRecommendationView.as_view(), name='damage_recommendation'),
+    path('search/', views.SearchView.as_view(), name='search'),
     #latitude and longtde nedded
 ]

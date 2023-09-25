@@ -13,7 +13,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
         fields = ['email', 'first_name', 'password']
         
 class VisitorSerializer(serializers.ModelSerializer):
-    profile_picture = serializers.CharField()
+    profile_picture = serializers.ImageField()
     personal_note = serializers.CharField()
     class Meta:
         model = Visitor

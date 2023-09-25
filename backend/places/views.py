@@ -5,8 +5,9 @@ from rest_framework import status
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from django.shortcuts import get_object_or_404
-from .serializers import VisitablePlaceSerializer, HotelSerializer, RecommendatiomSerializer, DamagereportSerializer
-from .models import VisitablePlace, PlacePosts, Comment, Hotel
+from .serializers import VisitablePlaceSerializer, HotelSerializer, RecommendatiomSerializer, DamagereportSerializer, CommentSerializer, RecommendatiomSerializer, DamagereportSerializer
+from places.serializers import PlacePostsSerializer
+from .models import VisitablePlace, PlacePosts, Comment, Hotel, SiteReccomendation, DamageReport
 from posts.models import VisitorStory, StoryImage, StoryVideo
 
 from django.shortcuts import get_object_or_404
@@ -21,6 +22,8 @@ from accounts.models import CustomUser
 
 from django.core.mail import send_mail
 from django.conf import settings
+from django.db.models import Q
+
 
 
 class TouristSitesView(generics.ListAPIView):
@@ -142,3 +145,50 @@ class DamageRecommendationView(APIView):
         if serializer.is_valid():
             serializer.save(user=user)
         return Response({'data':'created'}, status=status.HTTP_200_OK)
+    
+
+
+class SearchView(APIView):
+    def get(self, request):
+        query = request.query_params.get('q', '')
+
+        # Search VisitablePlace
+        visitable_places = VisitablePlace.objects.filter(
+             Q(description__icontains=query)
+        )
+        visitable_place_serializer = VisitablePlaceSerializer(visitable_places, many=True)
+
+        # Search PlacePosts
+        place_posts = PlacePosts.objects.filter(text__icontains=query)
+        place_posts_serializer = PlacePostsSerializer(place_posts, many=True)
+
+        # Search Comment
+        comments = Comment.objects.filter(text__icontains=query)
+        comments_serializer = CommentSerializer(comments, many=True)
+
+        # Search Hotel
+        hotels = Hotel.objects.filter(name__icontains=query)
+        hotels_serializer = HotelSerializer(hotels, many=True)
+
+        # Search SiteReccomendation
+        site_recommendations = SiteReccomendation.objects.filter(
+            Q(region__icontains=query) | Q(zone__icontains=query) | Q(text_description__icontains=query)
+        )
+        site_recommendations_serializer = RecommendatiomSerializer(site_recommendations, many=True)
+
+        # Search DamageReport
+        damage_reports = DamageReport.objects.filter(
+            Q(region__icontains=query) | Q(zone__icontains=query) | Q(text_description__icontains=query)
+        )
+        damage_reports_serializer = DamagereportSerializer(damage_reports, many=True)
+
+        results = {
+            'visitable_places': visitable_place_serializer.data,
+            'place_posts': place_posts_serializer.data,
+            'comments': comments_serializer.data,
+            'hotels': hotels_serializer.data,
+            'site_recommendations': site_recommendations_serializer.data,
+            'damage_reports': damage_reports_serializer.data
+        }
+
+        return Response(results)

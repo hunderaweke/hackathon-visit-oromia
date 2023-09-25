@@ -55,4 +55,3 @@ class DamageReport(models.Model):
     
     
     
-
