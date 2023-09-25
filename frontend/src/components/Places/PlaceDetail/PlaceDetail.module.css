@@ -1,21 +1,17 @@
-.card{
-    width: 18rem !important;
-    background-color: rgb(235, 235, 235);
+.story{
     border: 3px solid silver;
     border-bottom: 5px solid silver;
     border-radius: 10px;
     transition: 0.4s ease;
 }
-.card:hover{
+.story:hover{
     border: 3px solid #cc00ff;
     border-bottom: 5px solid #cc00ff;
     border-radius: 10px;
 }
-.cardImg{
-    border-radius: 0.5rem;
+/* .last_img{
+    
+} */
+.img{
+    width: 20rem imo !important;
 }
-.cardDistance{
-    color: #3366ff;
-}
-
-

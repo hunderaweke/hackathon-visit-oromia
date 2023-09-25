@@ -1,4 +1,5 @@
 import PLaceCard from "../components/Places/PlaceCard/PLaceCard";
+import place from "../../public/images/destination_1.jpg";
 
 const Places = () => {
   return (
@@ -14,13 +15,79 @@ const Places = () => {
         ></iframe>
       </div>
       <div className="container">
-        <div className="row justify-content-center">
-            <PLaceCard />
-            <PLaceCard />
-            <PLaceCard />
-            <PLaceCard />
-            <PLaceCard />
-            <PLaceCard />
+        <div className="d-flex flex-wrap justify-content-center">
+          <PLaceCard
+            title="Bale Mountains"
+            img={place}
+            description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio,
+              praesentium."
+            distance="5Km"
+            url="/place/detail"
+          />
+          <PLaceCard
+            title="Bale Mountains"
+            img={place}
+            description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio,
+              praesentium."
+            distance="5Km"
+            url="/place/detail"
+          />
+          <PLaceCard
+            title="Bale Mountains"
+            img={place}
+            description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio,
+              praesentium."
+            distance="5Km"
+            url="/place/detail"
+          />
+          <PLaceCard
+            title="Bale Mountains"
+            img={place}
+            description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio,
+              praesentium."
+            distance="5Km"
+            url="/place/detail"
+          />
+          <PLaceCard
+            title="Bale Mountains"
+            img={place}
+            description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio,
+              praesentium."
+            distance="5Km"
+            url="/place/detail"
+          />
+          <PLaceCard
+            title="Bale Mountains"
+            img={place}
+            description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio,
+              praesentium."
+            distance="5Km"
+            url="/place/detail"
+          />
+          <PLaceCard
+            title="Bale Mountains"
+            img={place}
+            description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio,
+              praesentium."
+            distance="5Km"
+            url="/place/detail"
+          />
+          <PLaceCard
+            title="Bale Mountains"
+            img={place}
+            description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio,
+              praesentium."
+            distance="5Km"
+            url="/place/detail"
+          />
+          <PLaceCard
+            title="Bale Mountains"
+            img={place}
+            description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio,
+              praesentium."
+            distance="5Km"
+            url="/place/detail"
+          />
         </div>
       </div>
     </>
