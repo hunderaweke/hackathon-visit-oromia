@@ -4,9 +4,9 @@ import { Layout } from "./pages/Layout";
 import Home from "./pages/Home";
 import Login from "./components/login_signup/Login";
 import Signup from "./components/login_signup/Signup";
+import { User } from "./pages/Profile";
 import Places from "./pages/Places";
 import PlaceDetail from "./components/Places/PlaceDetail/PlaceDetail";
-
 function App() {
   return (
     <>

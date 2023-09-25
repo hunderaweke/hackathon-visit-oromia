@@ -1,3 +1,15 @@
+// <<<<<<< HEAD
+// import { Container } from "react-bootstrap";
+// export const Places = () => {
+//   return (
+//     <>
+//       <Container>
+//         <a href="place">Places</a>
+//       </Container>
+//     </>
+//   );
+// };
+// =======
 import PLaceCard from "../components/Places/PlaceCard/PLaceCard";
 import place from "../../public/images/destination_1.jpg";
 
