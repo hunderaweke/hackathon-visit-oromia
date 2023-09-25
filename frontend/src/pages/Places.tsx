@@ -1,11 +1,8 @@
 import PLaceCard from "../components/Places/PlaceCard/PLaceCard";
 import axios from "axios";
 import { MapContainer, TileLayer, useMap, Popup, Marker } from "react-leaflet";
-import { Container } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import { LeafletEvent, Map } from "leaflet";
 import "leaflet/dist/leaflet.css";
-import zIndex from "@mui/material/styles/zIndex";
 const Places = () => {
   const [places, setPlaces] = useState([]);
   useEffect(() => {
