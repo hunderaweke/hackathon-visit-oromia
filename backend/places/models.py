@@ -4,8 +4,8 @@ from accounts.models import CustomUser
 class VisitablePlace(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
-    regione = models.CharField(max_length=255)
-    latitude = models.CharField(max_length=255)
+    region = models.CharField(max_length=255)
+    latitude = models.FloatField(max_length=255)
     longitude = models.FloatField()
     category = models.CharField(max_length=255)
     

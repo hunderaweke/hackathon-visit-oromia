@@ -10,11 +10,16 @@ from rest_framework_simplejwt.tokens import RefreshToken
 
 from .models import CustomUser
 from .serializers import CustomUserSerializer
-
+from rest_framework import generics
+from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.permissions import AllowAny
 # Create your views here.
 
+class GetUserView(generics.ListAPIView):
+    queryset = CustomUser.objects.all()
+    serializer_class = CustomUserSerializer
+    pagination_class = LimitOffsetPagination
 
 class UserCreationView(APIView):
     authentication_classes = [SessionAuthentication, BasicAuthentication]
@@ -43,6 +48,8 @@ class UserCreationView(APIView):
                 
 
 class UserLoginView(APIView):
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [AllowAny]
     def post(self, request):
         data = request.data.copy()
         email = data.get('email')
@@ -51,10 +58,12 @@ class UserLoginView(APIView):
         if user.check_password(password):
             refresh = RefreshToken.for_user(user)
             # Generate token and send it to the user
+            serializer  = CustomUserSerializer(instance=user)
             token = {
                 'refresh': str(refresh),
                 'access': str(refresh.access_token),
+                'user_data':serializer.data
             }
             return Response(token, status=status.HTTP_200_OK)
         
-        return Response(data='invalid credentials', status=status.HTTP_401_UNAUTHORIZED)
+        return Response(data='invalid login credentials', status=status.HTTP_404_NOT_FOUND)

@@ -26,6 +26,8 @@ class TouristSitesView(generics.ListAPIView):
     pagination_class = LimitOffsetPagination
 
 class TouristSiteInfoView(APIView):
+    authentication_classes = ['JWTAuthentication']
+    
     def get(self, request, **kwargs):
         place_id = kwargs.get('id')
         try:
@@ -67,12 +69,25 @@ class TouristSiteCommentsView(APIView):
 class NearByHotelsView(APIView):
     def get(self, request):
         id = request.request.query_params.get('place_id')
-        latitude = request.request.query_params.get('latitude')
-        longtude = request.request.query_params.get('longtude')
-        place = get_object_or_404(VisitablePlace, id=id)
-        place_latitude = place.latitude
-        place_longtude = place.longitude
+        latitude = request.query_params.get('latitude')
+        longitude = request.query_params.get('longitude')
+        distance_range = request.query_params.get('distance')
+        search_mode = request.query_params('search_mode')
+        
+        nearby_hotels = []
         hotels = Hotel.objects.all()
+        if search_mode == 'by_location':
+            for hotel in hotels:
+                if haversine_distance(float(latitude), float(longitude), float(hotel.longitude), float(hotel.longitude)) <= float(distance_range):
+                    nearby_hotels.append(hotel)
+            serializer = ''
+            
+        else:
+            place = get_object_or_404(VisitablePlace, id=id)
+            place_latitude = place.latitude
+            place_longtude = place.longitude
+            hotels = Hotel.objects.all()
+            
         
         
         # Implement the logic for retrieving nearby hotels
@@ -87,18 +102,14 @@ class NearbyTouristPlacesView(APIView):
 
         if latitude is None or longitude is None or distance_in_km is None:
             return Response({'error': 'Latitude, longitude, and distance parameters are required.'}, status=400)
-
-        try:
-            nearby_places = []
+        nearby_places = []
             
-            places = VisitablePlace.objects.all()
+        places = VisitablePlace.objects.all()
             
-            for place in places:
-                if haversine_distance(latitude, longitude, place.longitude, place.longitude) <= distance_in_km:
-                    nearby_places.append(place)
+        for place in places:
+            if haversine_distance(float(latitude), float(longitude), float(place.longitude), float(place.longitude)) <= float(distance_in_km):
+                nearby_places.append(place)
             
             # Serialize the nearby places and return the response
-            serializer = VisitablePlaceSerializer(nearby_places, many=True)
-            return Response(serializer.data)
-        except (TypeError, ValueError):
-            return Response({'error': 'Invalid latitude or longitude values.'}, status=400)
+        serializer = VisitablePlaceSerializer(nearby_places, many=True)
+        return Response(serializer.data)

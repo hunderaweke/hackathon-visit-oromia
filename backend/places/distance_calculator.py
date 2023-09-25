@@ -1,6 +1,6 @@
 from math import radians, cos, sin, asin, sqrt
 
-def haversine_distance(self, lat1, lon1, lat2, lon2):
+def haversine_distance(lat1, lon1, lat2, lon2):
         # Calculate the Haversine distance between two points
         r = 6371  # Radius of the Earth in kilometers
         dlat = radians(lat2 - lat1)

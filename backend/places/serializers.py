@@ -5,7 +5,7 @@ from accounts.serializers import CustomUserSerializer
 class VisitablePlaceSerializer(serializers.ModelSerializer):
     name = serializers.CharField()
     description = serializers.CharField()
-    regione = serializers.CharField()
+    region = serializers.CharField()
     latitude = serializers.CharField()
     longitude = serializers.FloatField()
     category = serializers.CharField()
