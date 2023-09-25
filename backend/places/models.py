@@ -31,7 +31,4 @@ class Hotel(models.Model):
     latitude = models.FloatField()
     longtude =  models.FloatField()
     description = models.TextField()
-    photo = models.ImageField(upload_to='hotels/images')
-    
-    
-    
+    photo = models.ImageField(upload_to='hotels/images')    

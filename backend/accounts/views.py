@@ -11,10 +11,14 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from .models import CustomUser
 from .serializers import CustomUserSerializer
 
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import AllowAny
 # Create your views here.
 
 
 class UserCreationView(APIView):
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [AllowAny]
     def post(self, request):
         data = request.data.copy()
         email = data.get('email')
@@ -36,7 +40,6 @@ class UserCreationView(APIView):
                 return Response(data=token, status=status.HTTP_201_CREATED)
             else:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
-                
                 
 
 class UserLoginView(APIView):
