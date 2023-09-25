@@ -1,0 +1,234 @@
+Visit-Oromia 
+
+
+Sheraton Addis
+      latitude: 9.0127° N
+    Longitude: 38.7604° E
+
+ radisson Blu Hotel
+   latitude: 9.0184° N
+   longitude: 38.7601° E
+
+Hilton Addis Ababa
+   Latitude: 9.0083° N
+   Longitude: 38.7585° E
+
+ Marriott Executive Apartments
+   latitude: 9.0083° N
+    Longitude: 38.7477° E
+
+Hyatt Regency 
+   Latitude: 9.0334° N
+  longitude: 38.7602° E
+
+Golden Tulip Addis Ababa
+   Latitude: 9.0017° N
+   Longitude: 38.7454° E
+
+Jupiter International Hotel - Cazanchise
+   Latitude: 9.0323° N
+   Longitude: 38.7600° E
+
+Capital Hotel and Spa
+   latitude: 9.0220° N
+   Longitude: 38.7604° E
+
+Elilly International Hotel
+   latitude: 9.0283° N
+   longitude: 38.7595° E
+
+Ramada by Wyndham 
+    Latitude: 9.0258° N
+     longitude: 38.7467° E
+
+Sapphire Addis Hotel
+    Latitude: 9.0227° N
+    Longitude: 38.7602° E
+
+Friendship International Hotel
+    Latitude: 9.0326° N
+     Longitude: 38.7427° E
+
+Harmony Hotel
+    Latitude: 9.0197° N
+   Longitude: 38.7602° E
+
+nexus Hotel
+    Latitude: 9.0272° N
+    Longitude: 38.7456° E
+
+Capital Hotel & Spa
+    Latitude: 9.0092° N
+    Longitude: 38.7577° E
+
+Ramada Addis
+    Latitude: 9.0072° N
+    Longitude: 38.7614° E
+
+Monarch Hotel
+    Latitude: 9.0342° N
+    Longitude: 38.7608° E
+
+Bole Skygate Hotel
+    Latitude: 8.9944° N
+    Longitude: 38.8008° E
+
+Nexus Hotel Addis Ababa
+    Latitude: 9.0291° N
+    Longitude: 38.7479° E
+
+Caravan Hotel
+    Latitude: 9.0018° N
+    Longitude: 38.7565° E
+
+Abyssinia Renaissance Hotel
+    Latitude: 9.0255° N
+    Longitude: 38.7582° E
+
+Capital Hotel and Spa
+    Latitude: 9.0234° N
+    Longitude: 38.7567° E
+
+The Residence Suite Hotel
+    Latitude: 9.0129° N
+    Longitude: 38.7530° E
+
+dreamliner Hotel
+    Latitude: 9.0206° N
+    Longitude: 38.7559° E
+
+Ramada Encore 
+    Latitude: 9.0232° N
+    Longitude: 38.7586° E
+
+wassamar Hotel
+     Latitude: 9.0109° N
+      Longitude: 38.7569° E
+
+Addis Regency Hotel
+    Latitude: 9.0295° N
+    Longitude: 38.7568° E
+
+Nexus Hotel, Bole
+    Latitude: 9.0095° N
+    Longitude: 38.7927° E
+
+Marriott Addis Ababa
+    Latitude: 9.0242° N
+    Longitude: 38.7563° E
+
+Ararat Hotel
+    Latitude: 9.0221° N
+    Longitude: 38.7577° E
+
+Hotel Lobelia
+    Latitude: 9.0291° N
+    Longitude: 38.7479° E
+
+Wassamar Hotel Bole
+    Latitude: 9.0094° N
+    Longitude: 38.7914° E
+
+Azzeman Hotel
+    Latitude: 9.0189° N
+    Longitude: 38.7575° E
+
+
+
+
+
+
+
+Lalibela
+ (Latitude: 12.028, Longitude: 39.045)
+ Known for its rock-hewn churches, 
+ Lalibela is a UNESCO World Heritage Site and a significant 
+ pilgrimage site for Ethiopian Orthodox Christians.
+
+Addis Ababa
+ (Latitude: 9.010, Longitude: 38.760)
+  The capital city of Ethiopia, 
+  Addis Ababa is a vibrant metropolis offering a 
+  blend of historical landmarks, museums, markets, and cultural experiences.
+
+Simien Mountains National Park
+ (Latitude: 13.100, Longitude: 38.083)
+  A UNESCO World Heritage Site, the Simien Mountains boast 
+  stunning landscapes, endemic wildlife, and challenging hiking opportunities.
+
+Axum 
+(Latitude: 14.130, Longitude: 38.720)
+ An ancient city, Axum is renowned for its obelisks, 
+  archaeological sites, and as the alleged resting place of the Ark of the Covenant.
+
+ Danakil Depression 
+(Latitude: 14.241, Longitude: 40.299)
+ Located in the Afar region, the Danakil Depression is one of 
+the hottest places on Earth and offers otherworldly landscapes,
+ including sulfur springs and salt flats.
+
+Gondar (Latitude: 12.605, Longitude: 37.467)
+ Known as the "Camelot of Africa,"
+ Gondar showcases medieval castles, churches, and a rich history of Ethiopian emperors.
+
+Omo Valley 
+(Latitude: 5.555, Longitude: 36.530)
+Home to diverse ethnic groups, the Omo Valley offers a unique cultural experience
+, traditional tribes, and beautiful landscapes.
+
+Lake Tana (Latitude: 12.010, Longitude: 37.243)
+  The largest lake in Ethiopia, Lake Tana is dotted with ancient
+ monasteries and is the source of the Blue Nile River.
+
+ Harar (Latitude: 9.312, Longitude: 42.125)
+ Known for its ancient walled city, Harar is a UNESCO World Heritage
+ Site and offers a distinct cultural experience.
+
+ Bale Mountains National Park
+ (Latitude: 6.875, Longitude: 39.535)
+ A paradise for nature lovers, the Bale Mountains National Park is 
+home to diverse wildlife, including the Ethiopian wolf.
+
+Debre Damo (Latitude: 14.312, Longitude: 38.255)
+ An ancient monastery situated on a cliff,
+ Debre Damo is known for its unique entrance accessible only by climbing a rope.
+
+Lake Awassa
+ (Latitude: 7.062, Longitude: 38.477)
+ Located in the Great Rift Valley, Lake Awassa is a
+ popular destination for birdwatching, boat trips, and relaxing by the lakeside.
+
+Konso Cultural Landscape
+ (Latitude: 5.278, Longitude: 37.457)
+ Recognized as a UNESCO World Heritage Site, 
+the Konso Cultural Landscape showcases terraced hillsides and unique cultural traditions.
+
+Blue Nile Falls
+ (Latitude: 11.330, Longitude: 37.430)
+ Also called "Tis Issat" meaning "Smoking Water,"
+ the Blue Nile Falls is a spectacular waterfall often compared to the Niagara Falls.
+
+Arba Minch
+ (Latitude: 6.042, Longitude: 37.548)
+ Translated as "Forty Springs," Arba Minch offers stunning
+ views of the twin lakes, Chamo and Abaya, and is a gateway to the Omo Valley.
+
+Tigray Churches
+ (Latitude and longitude values vary)
+Scattered across the Tigray region, the rock-hewn churches
+ of Tigray are architectural marvels dating back to the 4th century.
+
+Nechisar National Park
+ (Latitude: 6.858, Longitude: 37.526)
+ Located near Arba Minch, Nechisar National Park is known 
+for its wildlife, including zebras, gazelles, and crocodiles.
+
+Lake Langano
+ (Latitude: 7.912, Longitude: 38.578)
+ A popular weekend retreat, Lake Langano offers
+ beautiful beaches, water sports, and resorts.
+
+Sof Omar Caves
+ (Latitude: 7.275, Longitude: 39.006)
+ One of the largest cave systems in Africa, 
+the Sof Omar Caves feature spectacular limestone formations and an underground river.
