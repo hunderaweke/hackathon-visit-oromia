@@ -26,7 +26,6 @@ const Login = () => {
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const onSubmit = (data: FieldValues) => {
-    console.log(data);
     try {
       axios
         .post("http://192.168.60.185:5000/accounts/login/", data)

@@ -1,9 +1,27 @@
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { useNavigate } from "react-router";
+import {useEffect,useState} from 'react';
+import axios from "axios";
 import styles from "./header.module.css";
 export const Header = () => {
   const navigation = useNavigate();
-
+  const [userData,setUserData] = useState(null);
+  const [logggedIn,setLoggedIn] = useState(false);
+  const token = localStorage.getItem('access')
+  useEffect(()=>{
+    try{
+      axios.get('http://192.168.60.185:5000/accounts/visitor_profile/',{headers:{
+        Authorization:`Bearer ${token}`
+      }})
+      .then((res)=>{
+        setUserData(res.data)
+        setLoggedIn(true)
+      })
+    }
+    catch(error){
+      console.log(error)
+    }
+  },[])
   return (
     <header className={`${styles.header} py-lg-2 fixed-top z-2 bg-light`}>
       <Container fluid>
@@ -41,6 +59,12 @@ export const Header = () => {
                     ></input>{" "}
                   </form>{" "}
                 </div>
+               { logggedIn ? <button onClick={()=>{
+                navigation('/user')
+               }}>
+                <img src={userData && userData?.profile.profile_pictures} alt="" />
+                <p>{userData.user.email}</p>
+               </button>:
                 <div className="text-end d-flex g-2 ">
                   {" "}
                   <button
@@ -61,7 +85,7 @@ export const Header = () => {
                   >
                     Sign-up
                   </button>
-                </div>
+                </div>}
               </Nav>
             </Navbar.Collapse>{" "}
           </Navbar>
