@@ -1,58 +1,33 @@
-import { Container } from "react-bootstrap";
-import styles from "./userprofile.module.css";
+import { Header } from "../Home/1_header/Header";
+import YourProfile from "./your_profile/YourProfile";
+import YourStory from "./your_story/YourStory";
+
+// import styles from "./userprofile.module.css";
 export const UserProfile = () => {
   return (
     <>
-      <main className={`py-5`}>
-        <Container className={`d-flex justify-content-evenly `}>
-          <div className={`mx-5 ${styles.profilePicture}`}>
-            <img src="" alt="" />
-          </div>
-          <div className={`d-flex flex-column justify-content-center `}>
-            <h4>User Name</h4>
-            <p>Lorem ipsum dolor sit amet.</p>
-            <a href="#">@xyz</a>
-          </div>
-          <div
-            className={`d-flex flex-column justify-content-center justify-content-evenly `}
-          >
-            <button className={`btn btn-outline-dark`}>Edit Profile</button>
-            <button className={`btn btn-outline-dark `}>Add Story</button>
-          </div>
-        </Container>
-        <Container className={`text-center my-5 d-flex flex-column`}>
-          <div>
-            <h1>Stories</h1>
-          </div>
-          <Container className={`d-flex justify-content-evenly py-5`}>
-            <link>
-              <div className={`${styles.storyCard}`}></div>
-            </link>
-            <link>
-              <div className={`${styles.storyCard}`}></div>
-            </link>
-            <link>
-              <div className={`${styles.storyCard}`}></div>
-            </link>
-          </Container>
-        </Container>
-        <Container>
-          <div className={`text-center`}>
-            <h1>Visited Sites</h1>
-          </div>
-          <Container className={`d-flex justify-content-evenly py-5`}>
-            <link>
-              <div className={`${styles.storyCard}`}></div>
-            </link>
-            <link>
-              <div className={`${styles.storyCard}`}></div>
-            </link>
-            <link>
-              <div className={`${styles.storyCard}`}></div>
-            </link>
-          </Container>
-        </Container>
-      </main>
+      <Header />
+      <div className="my-5">.</div>
+      
+<div className="container mt-3">
+  <ul className="nav nav-tabs" role="tablist">
+    <li className="nav-item">
+      <a className="nav-link active" data-bs-toggle="tab" href="#Profile">Profile</a>
+    </li>
+    <li className="nav-item">
+      <a className="nav-link" data-bs-toggle="tab" href="#Story">Story</a>
+    </li>
+  </ul>
+
+  <div className="tab-content">
+    <div id="Profile" className="container tab-pane active"><br />
+      <YourProfile />
+    </div>
+    <div id="Story" className="container tab-pane fade"><br />
+      <YourStory />
+    </div>
+  </div>
+</div>
     </>
   );
 };

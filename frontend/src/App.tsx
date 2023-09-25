@@ -4,9 +4,10 @@ import { Layout } from "./pages/Layout";
 import Home from "./pages/Home";
 import Login from "./components/login_signup/Login";
 import Signup from "./components/login_signup/Signup";
-import { User } from "./pages/Profile";
+// import { User } from "./pages/Profile";
 import Places from "./pages/Places";
 import PlaceDetail from "./components/Places/PlaceDetail/PlaceDetail";
+import { UserProfile } from "./components/user_profile/UserProfile";
 function App() {
   return (
     <>
@@ -16,9 +17,10 @@ function App() {
             <Route index element={<Home />} />
             <Route path="/places" element={<Places />} />
           </Route>
-          <Route path="login" element={<Login />} />
-          <Route path="signup" element={<Signup />} />
-          <Route path="place/detail" element={<PlaceDetail />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/place/detail" element={<PlaceDetail />} />
+          <Route path="/user" element={<UserProfile />} />
         </Routes>
       </Router>
     </>
