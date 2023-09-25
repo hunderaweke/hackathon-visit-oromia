@@ -83,6 +83,7 @@ class VisitorProfileView(TokenObtainPairView,APIView):
         userializer = CustomUserSerializer(user)
         data = {}
         data['profile'] = serializer.data
+        data['profile']['password'] = ''
         data['user'] = userializer.data
         return Response(data)
     
