@@ -1,5 +1,6 @@
 .card{
     width: 18rem !important;
+    max-height: 24rem;
     background-color: rgb(255, 255, 255);
     border: 1px solid gray;
     border-radius: 10px;
@@ -15,5 +16,6 @@
 .cardDistance{
     color: #3366ff;
 }
-
-
+.description{
+    max-height: 7rem;
+}
