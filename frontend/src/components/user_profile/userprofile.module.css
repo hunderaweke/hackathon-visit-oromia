@@ -1,0 +1,13 @@
+.profilePicture{
+    background-color: lightgray;
+    aspect-ratio: 1;
+    height: 12rem;
+    border-radius: 50%;
+}
+.storyCard{
+    width: 15rem;
+    height: 17rem;
+    background-color: lightgray;
+    box-shadow: 7px 7px 14px 5px gray;
+    border-radius: 1rem;
+}
