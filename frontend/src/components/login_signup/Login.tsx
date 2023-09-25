@@ -34,6 +34,7 @@ const Login = () => {
           console.log(res.data);
           navigatation('/places');
           localStorage.setItem("refresh", res.data.refresh);
+          localStorage.setItem("access",res.data.access);
         });
     } catch (error) {
       console.error(error);
