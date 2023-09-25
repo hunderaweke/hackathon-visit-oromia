@@ -1,7 +1,7 @@
 import { FieldValues, useForm } from 'react-hook-form'
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-
+import axios from 'axios';
 import logo from '../../assets/logo.png'
 
 const schema = z.object({
@@ -23,7 +23,8 @@ const Login = () => {
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const onSubmit = (data: FieldValues) =>{
-    console.log(data)
+    console.log(data);
+    axios.post()
   }
 
   return (

@@ -2,7 +2,9 @@ import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import logo from "../../assets/logo.png";
-// import axios from "axios";
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router";
 const schema = z
   .object({
     first_name: z
@@ -31,9 +33,10 @@ const schema = z
   });
 
 type FormData = z.infer<typeof schema>;
-
+// const [validationResult,setValidationResult] = useState("");
+// const Naviagate = useNavigate()
 const Signup = () => {
-  const {
+   const {
     register,
     handleSubmit,
     formState: { errors },
@@ -41,7 +44,16 @@ const Signup = () => {
 
   const onSubmit = (data: FieldValues) => {
     console.log(data);
-  };
+    try{
+      axios.post("http://192.168.60.185:5000/accounts/register/",data)
+      // .then((res)=>{
+      
+      // })
+    }
+    catch(errorr){
+      console.error(errorr)
+    }
+  }
 
   return (
     <div
