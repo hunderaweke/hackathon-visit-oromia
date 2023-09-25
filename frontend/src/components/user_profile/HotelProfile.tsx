@@ -1,5 +1,4 @@
 import { Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import styles from "./hotelprofile.module.css";
 export const HotelProfile = () => {
   return (
@@ -23,15 +22,15 @@ export const HotelProfile = () => {
             <h1>Stories</h1>
           </div>
           <Container className={`d-lg-flex justify-content-evenly py-5`}>
-            <Link>
+            <link>
               <div className={`${styles.storyCard}`}></div>
-            </Link>
-            <Link>
+            </link>
+            <link>
               <div className={`${styles.storyCard}`}></div>
-            </Link>
-            <Link>
+            </link>
+            <link>
               <div className={`${styles.storyCard}`}></div>
-            </Link>
+            </link>
           </Container>
         </Container>
         <Container>
@@ -39,15 +38,15 @@ export const HotelProfile = () => {
             <h1>Visited Sites</h1>
           </div>
           <Container className={`d-flex justify-content-evenly py-5`}>
-            <Link>
+            <link>
               <div className={`  ${styles.storyCard}`}></div>
-            </Link>
-            <Link>
+            </link>
+            <link>
               <div className={`${styles.storyCard}`}></div>
-            </Link>
-            <Link>
+            </link>
+            <link>
               <div className={`${styles.storyCard}`}></div>
-            </Link>
+            </link>
           </Container>
         </Container>
       </main>

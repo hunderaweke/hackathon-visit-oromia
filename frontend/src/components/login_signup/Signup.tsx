@@ -1,44 +1,52 @@
-import { FieldValues, useForm } from 'react-hook-form'
+import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-
-import logo from '../../assets/logo.png'
-
-const schema = z.object({
-  email: z.string({ required_error: "Email is Required"})
-          .email({ message: "Invalid email address"  })
-          .min(4, { message: "Must be at least 4 characters" }),
-  password: z.string({ required_error: "Password Must be Filled" })
-  .min(8, {message: "Password is at Least 8 charactera"}),
-  conpassword: z.string({ required_error: "Password Must be Filled" })
-  .min(8, {message: "Password is at Least 8 charactera"})
-}).superRefine(({ conpassword, password }, ctx) => {
-  if (conpassword !== password) {
-    ctx.addIssue({
-      code: "custom",
-      message: "Passwords does not match"
-    });
-  }
-});
+import logo from "../../assets/logo.png";
+import axios from "axios";
+const schema = z
+  .object({
+    first_name: z
+      .string({
+        required_error: "Full Name is required",
+      })
+      .min(1, { message: "Name is required" }),
+    email: z
+      .string({ required_error: "Email is Required" })
+      .email({ message: "Invalid email address" })
+      .min(4, { message: "Must be at least 4 characters" }),
+    password: z
+      .string({ required_error: "Password Must be Filled" })
+      .min(8, { message: "Password is at Least 8 charactera" }),
+    conpassword: z
+      .string({ required_error: "Password Must be Filled" })
+      .min(8, { message: "Password is at Least 8 charactera" }),
+  })
+  .superRefine(({ conpassword, password }, ctx) => {
+    if (conpassword !== password) {
+      ctx.addIssue({
+        code: "custom",
+        message: "Passwords does not match",
+      });
+    }
+  });
 
 type FormData = z.infer<typeof schema>;
 
 const Signup = () => {
-
-  const { 
-    register, 
-    handleSubmit, 
-    formState: { errors }
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
-  const onSubmit = (data: FieldValues) =>{
-    console.log(data)
-  }
+  const onSubmit = (data: FieldValues) => {
+    console.log(data);
+  };
 
   return (
     <div
       className="container-fluid d-flex justify-content-center align-items-center bg"
-      style={{minHeight: "100vh"}}
+      style={{ minHeight: "100vh" }}
     >
       <form
         method="POST"
@@ -54,6 +62,21 @@ const Signup = () => {
           <span className="text-light mx-4 fs-3">Imaltuu</span>
         </div>
         <div className="mb-3 mt-3">
+          <label htmlFor="first_name" className="form-label fs-6 text-light">
+            Full Name:
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="full-name"
+            placeholder="Full Name"
+            // required
+            {...register("first_name")}
+          />
+          {/* {errors.email && <p className="text-danger"> {errors.email.required_error} </p>} */}
+          {errors.first_name && (
+            <p className="text-danger"> {errors.first_name.message} </p>
+          )}
           <label htmlFor="email" className="form-label fs-6 text-light">
             Email:
           </label>
@@ -63,10 +86,12 @@ const Signup = () => {
             id="email"
             placeholder="Enter email"
             // required
-            {...register('email')}
+            {...register("email")}
           />
           {/* {errors.email && <p className="text-danger"> {errors.email.required_error} </p>} */}
-          {errors.email && <p className="text-danger"> {errors.email.message} </p>}
+          {errors.email && (
+            <p className="text-danger"> {errors.email.message} </p>
+          )}
         </div>
         <div className="mb-3 mt-3">
           <label htmlFor="password" className="form-label fs-6 text-light">
@@ -80,7 +105,9 @@ const Signup = () => {
             // required
             {...register("password")}
           />
-          {errors.password && <p className="text-danger"> {errors.password.message} </p>}
+          {errors.password && (
+            <p className="text-danger"> {errors.password.message} </p>
+          )}
         </div>
         <div className="mb-3 mt-3">
           <label htmlFor="password" className="form-label fs-6 text-light">
@@ -94,7 +121,9 @@ const Signup = () => {
             // required field
             {...register("conpassword")}
           />
-          {errors.conpassword && <p className="text-danger"> {errors.conpassword.message} </p>}
+          {errors.conpassword && (
+            <p className="text-danger"> {errors.conpassword.message} </p>
+          )}
         </div>
         <div className="mt-3 mb-3 d-flex">
           <p className="text-light ">Already have account ? </p>
@@ -103,14 +132,14 @@ const Signup = () => {
           </a>
         </div>
         <button
-        type='submit'
+          type="submit"
           className="btn w-100 border-primary rounded-5 text-light mt-3"
         >
-            Signup
+          Signup
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Signup
+export default Signup;

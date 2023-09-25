@@ -1,5 +1,4 @@
 import { Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import styles from "./userprofile.module.css";
 export const UserProfile = () => {
   return (
@@ -26,15 +25,15 @@ export const UserProfile = () => {
             <h1>Stories</h1>
           </div>
           <Container className={`d-flex justify-content-evenly py-5`}>
-            <Link>
+            <link>
               <div className={`${styles.storyCard}`}></div>
-            </Link>
-            <Link>
+            </link>
+            <link>
               <div className={`${styles.storyCard}`}></div>
-            </Link>
-            <Link>
+            </link>
+            <link>
               <div className={`${styles.storyCard}`}></div>
-            </Link>
+            </link>
           </Container>
         </Container>
         <Container>
@@ -42,15 +41,15 @@ export const UserProfile = () => {
             <h1>Visited Sites</h1>
           </div>
           <Container className={`d-flex justify-content-evenly py-5`}>
-            <Link>
+            <link>
               <div className={`${styles.storyCard}`}></div>
-            </Link>
-            <Link>
+            </link>
+            <link>
               <div className={`${styles.storyCard}`}></div>
-            </Link>
-            <Link>
+            </link>
+            <link>
               <div className={`${styles.storyCard}`}></div>
-            </Link>
+            </link>
           </Container>
         </Container>
       </main>

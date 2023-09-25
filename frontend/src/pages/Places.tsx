@@ -1,15 +1,15 @@
-<<<<<<< HEAD
-import { Container } from "react-bootstrap";
-export const Places = () => {
-  return (
-    <>
-      <Container>
-        <a href="place">Places</a>
-      </Container>
-    </>
-  );
-};
-=======
+// <<<<<<< HEAD
+// import { Container } from "react-bootstrap";
+// export const Places = () => {
+//   return (
+//     <>
+//       <Container>
+//         <a href="place">Places</a>
+//       </Container>
+//     </>
+//   );
+// };
+// =======
 import PLaceCard from "../components/Places/PlaceCard/PLaceCard";
 
 const Places = () => {
@@ -27,12 +27,12 @@ const Places = () => {
       </div>
       <div className="container">
         <div className="row justify-content-center">
-            <PLaceCard />
-            <PLaceCard />
-            <PLaceCard />
-            <PLaceCard />
-            <PLaceCard />
-            <PLaceCard />
+          <PLaceCard />
+          <PLaceCard />
+          <PLaceCard />
+          <PLaceCard />
+          <PLaceCard />
+          <PLaceCard />
         </div>
       </div>
     </>
@@ -40,4 +40,3 @@ const Places = () => {
 };
 
 export default Places;
->>>>>>> 394a0bd67b2e7e4f6ffb782115af8a6f1f7a7ead
