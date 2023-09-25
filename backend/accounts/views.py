@@ -8,8 +8,8 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from django.shortcuts import get_object_or_404
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from .models import CustomUser
-from .serializers import CustomUserSerializer
+from .models import CustomUser, Visitor
+from .serializers import CustomUserSerializer, VisitorSerializer
 from rest_framework import generics
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
@@ -67,3 +67,27 @@ class UserLoginView(APIView):
             return Response(token, status=status.HTTP_200_OK)
         
         return Response(data='invalid login credentials', status=status.HTTP_404_NOT_FOUND)
+
+class VisitorProfileView(TokenObtainPairView,APIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+    
+    def get(self, request):
+        user = request.user
+        profile = get_object_or_404(Visitor, user_id=user.id)
+        serializer = VisitorSerializer(data=profile)
+        return Response(profile.data)
+    
+    def post(self, request):
+        user = request.user
+        data = request.data.copy()
+        serializer = VisitorSerializer(data=data)
+        
+        if serializer.is_valid():
+            serializer.save(user=user)
+            return Response()
+        return Response({'data':'invalid credentials'})
+        
+
+        
+    

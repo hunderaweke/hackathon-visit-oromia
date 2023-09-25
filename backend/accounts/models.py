@@ -34,3 +34,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+class Visitor(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    profile_picture = models.ImageField(upload_to='profile_pictures/visitors')
+    personal_note = models.TextField()

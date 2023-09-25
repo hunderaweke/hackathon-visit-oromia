@@ -11,4 +11,3 @@ urlpatterns = [
     path('get_nearby_tourist_places/', views.NearbyTouristPlacesView.as_view(), name='nearby_places'),
     #latitude and longtde nedded
 ]
-

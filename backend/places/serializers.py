@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import VisitablePlace
+from .models import VisitablePlace, Hotel
 from accounts.serializers import CustomUserSerializer
 
 class VisitablePlaceSerializer(serializers.ModelSerializer):
@@ -36,4 +36,7 @@ class HotelSerializer(serializers.ModelSerializer):
     description = serializers.CharField()
     photo = serializers.ImageField()
     
+    class Meta:
+        model = Hotel
+        fields = '__all__'
    

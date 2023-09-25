@@ -2,12 +2,10 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework import status
-from rest_framework.exceptions import AuthenticationFailed
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from django.shortcuts import get_object_or_404
-from rest_framework_simplejwt.tokens import RefreshToken
-from .serializers import VisitablePlaceSerializer
+from .serializers import VisitablePlaceSerializer, HotelSerializer
 from .models import VisitablePlace, PlacePosts, Comment, Hotel
 from posts.models import VisitorStory, StoryImage, StoryVideo
 
@@ -25,9 +23,9 @@ class TouristSitesView(generics.ListAPIView):
     serializer_class = VisitablePlaceSerializer
     pagination_class = LimitOffsetPagination
 
+
 class TouristSiteInfoView(APIView):
     authentication_classes = ['JWTAuthentication']
-    
     def get(self, request, **kwargs):
         place_id = kwargs.get('id')
         try:
@@ -78,21 +76,21 @@ class NearByHotelsView(APIView):
         hotels = Hotel.objects.all()
         if search_mode == 'by_location':
             for hotel in hotels:
-                if haversine_distance(float(latitude), float(longitude), float(hotel.longitude), float(hotel.longitude)) <= float(distance_range):
+                if haversine_distance(float(latitude), float(longitude), float(hotel.latitude), float(hotel.longtude)) <= float(distance_range):
                     nearby_hotels.append(hotel)
-            serializer = ''
-            
+            serializer = HotelSerializer(hotels, many=True)    
+            return Response(serializer.data, status=status.HTTP_200_OK)
+           
         else:
             place = get_object_or_404(VisitablePlace, id=id)
             place_latitude = place.latitude
             place_longtude = place.longitude
-            hotels = Hotel.objects.all()
-            
-        
-        
-        # Implement the logic for retrieving nearby hotels
-        return Response({'data': 'Nearby hotels'})
-    
+            for hotel in hotels:
+                if haversine_distance(float(place_latitude), float(place_longtude), float(hotel.latitude), float(hotel.longtude)) <= float(distance_range):
+                    nearby_hotels.append(hotel)
+            serializer = HotelSerializer(hotels, many=True)    
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
 
 class NearbyTouristPlacesView(APIView):
     def get(self, request):
@@ -112,4 +110,4 @@ class NearbyTouristPlacesView(APIView):
             
             # Serialize the nearby places and return the response
         serializer = VisitablePlaceSerializer(nearby_places, many=True)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
