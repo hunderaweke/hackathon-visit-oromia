@@ -1,8 +1,8 @@
 import styles from "./PlaceDetail.module.css";
 
-import image_1 from "../../../../public/images/destination_1.jpg";
-import image_2 from "../../../../public/images/destination_4.jpg";
-import image_3 from "../../../../public/images/destination_3.jpg";
+import image_1 from "../../../assets/images/destination_1.jpg";
+import image_2 from "../../../assets/images/destination_4.jpg";
+import image_3 from "../../../assets/images/destination_3.jpg";
 interface props {
   id: string;
   src: string;

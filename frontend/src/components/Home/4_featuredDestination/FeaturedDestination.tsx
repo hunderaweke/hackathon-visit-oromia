@@ -6,12 +6,14 @@ import { useMediaQuery } from "@mui/material";
 
 import styles from './feaatured.module.css'
 
-import destination_1 from '../../../../public/images/destination_1.jpg'
-import destination_2 from '../../../../public/images/destination_2.png'
-import destination_3 from '../../../../public/images/destination_3.jpg'
-import destination_4 from '../../../../public/images/destination_4.jpg'
-import destination_5 from '../../../../public/images/destination_5.jpg'
-import destination_6 from '../../../../public/images/destination_6.jpg'
+import destination_1 from '../../../assets/images/destination_1.jpg'
+import destination_2 from '../../../assets/images/destination_2.png'
+import destination_3 from '../../../assets/images/destination_3.jpg'
+import destination_4 from '../../../assets/images/destination_4.jpg'
+import destination_5 from '../../../assets/images/destination_5.jpg'
+import destination_6 from '../../../assets/images/destination_6.jpg'
+
+// import destination_8 from '../../../assets'
 
 interface props{
   profile: string

@@ -1,6 +1,6 @@
 import styles from "./Profile.module.css";
 
-import profile_img from "/person/person_1.jpg";
+import profile_img from "../../../assets/person/person_1.jpg"
 
 const YourProfile = () => {
   return (

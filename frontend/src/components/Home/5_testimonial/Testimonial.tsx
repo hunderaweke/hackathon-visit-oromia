@@ -5,11 +5,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css/bundle";
 
-import profile_1 from "../../../../public/person/person_1.jpg";
-import profile_2 from "../../../../public/person/person_2.jpg";
-import profile_3 from "../../../../public/person/person_3.jpg";
-import profile_4 from "../../../../public/person/person_4.jpg";
-import profile_5 from "../../../../public/person/person_5.jpg";
+import profile_1 from "../../../assets/person/person_1.jpg";
+import profile_2 from "../../../assets/person/person_2.jpg";
+import profile_3 from "../../../assets/person/person_3.jpg";
+import profile_4 from "../../../assets/person/person_4.jpg";
+import profile_5 from "../../../assets/person/person_5.jpg";
 
 import { useMediaQuery } from "@mui/material";
 
@@ -121,4 +121,3 @@ const Testimonial = () => {
 };
 
 export default Testimonial;
-

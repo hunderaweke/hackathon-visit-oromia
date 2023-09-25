@@ -1,8 +1,9 @@
 import { Header } from "../Home/1_header/Header";
 import YourProfile from "./your_profile/YourProfile";
-import YourStory from "./your_story/YourStory";
+import YourStory from "./your_story/YourStory"
 
 // import styles from "./userprofile.module.css";
+
 export const UserProfile = () => {
   return (
     <>
