@@ -9,7 +9,7 @@ export const UserProfile = () => {
       <Header />
       <div className="my-5">.</div>
 
-      <div className="container mt-3">
+      <div className="container my-5 py-3">
         <ul className="nav nav-tabs" role="tablist">
           <li className="nav-item">
             <a className="nav-link active" data-bs-toggle="tab" href="#Profile">
