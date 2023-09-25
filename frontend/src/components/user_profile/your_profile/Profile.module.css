@@ -3,5 +3,13 @@
     border-bottom-left-radius: 0;
 }
 .abc{
-    background-color: red;
+    font-style: italic;
+}
+.circle_story{
+    width: 2rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-color: #3366ff;
+    padding: 0.5rem;
+    color: white;
 }
