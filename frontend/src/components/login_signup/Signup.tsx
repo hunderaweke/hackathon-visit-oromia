@@ -1,10 +1,10 @@
-import { FieldValues, useForm } from "react-hook-form";
+import { FieldValues} from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import logo from "../../assets/logo.png";
 import axios from "axios";
-import { useState } from "react";
-import { useNavigate } from "react-router";
+// import { useState } from "react";
+// import { useNavigate } from "react-router";
 const schema = z
   .object({
     first_name: z
