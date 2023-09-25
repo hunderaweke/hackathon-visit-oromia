@@ -1,4 +1,4 @@
-import styles from "./Places.module.css";;
+import styles from "./Places.module.css";
 
 interface props{
   title: string,
