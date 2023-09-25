@@ -14,7 +14,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
         
 class VisitorSerializer(serializers.ModelSerializer):
     profile_picture = serializers.CharField()
-    
+    personal_note = serializers.CharField()
     class Meta:
         model = Visitor
         fields = ['personal_note', 'profile_picture']

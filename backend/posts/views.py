@@ -31,34 +31,6 @@ class VisitorStoryListCreateView(generics.ListCreateAPIView):
 
             headers = self.get_success_headers(serializer.data)
             return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
-'''
-request to the above endpoint 
-
-{
-  "user": 1,
-  "place": 1,
-  "caption": "Some caption",
-  "date_posted": "2023-09-24T12:00:00",
-  "images": [
-    {
-      "image": <base64-encoded-image-data>
-    },
-    {
-      "image": <base64-encoded-image-data>
-    }
-  ],
-  "videos": [
-    {
-      "video": <base64-encoded-video-data>
-    },
-    {
-      "video": <base64-encoded-video-data>
-    }
-  ]
-}
-
-'''
-
 
 
 

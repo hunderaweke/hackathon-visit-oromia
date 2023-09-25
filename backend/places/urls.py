@@ -9,5 +9,7 @@ urlpatterns = [
     path("get_tourist_site_comments/<int:id>/", views.TouristSiteCommentsView.as_view(), name="get_comments_of_place"),
     path('get_near_by_hotels/', views.NearByHotelsView.as_view(), name="get_nearby_hotels"),
     path('get_nearby_tourist_places/', views.NearbyTouristPlacesView.as_view(), name='nearby_places'),
+    path('site_recommendation/', views.SiteReccomendationView.as_view(), name='site_recommendation'),
+    path('damage_recomendation', views.DamageRecommendationView.as_view(), name='damage_recommendation'),
     #latitude and longtde nedded
 ]

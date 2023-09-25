@@ -5,7 +5,7 @@ from rest_framework import status
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from django.shortcuts import get_object_or_404
-from .serializers import VisitablePlaceSerializer, HotelSerializer
+from .serializers import VisitablePlaceSerializer, HotelSerializer, RecommendatiomSerializer, DamagereportSerializer
 from .models import VisitablePlace, PlacePosts, Comment, Hotel
 from posts.models import VisitorStory, StoryImage, StoryVideo
 
@@ -17,6 +17,11 @@ from .distance_calculator import haversine_distance
 from rest_framework import generics, permissions
 from rest_framework.permissions import AllowAny
 from rest_framework.pagination import LimitOffsetPagination
+from accounts.models import CustomUser
+
+from django.core.mail import send_mail
+from django.conf import settings
+
 
 class TouristSitesView(generics.ListAPIView):
     queryset = VisitablePlace.objects.all()
@@ -74,13 +79,13 @@ class NearByHotelsView(APIView):
         
         nearby_hotels = []
         hotels = Hotel.objects.all()
-        if search_mode == 'by_location':
+        if id is None:
             for hotel in hotels:
                 if haversine_distance(float(latitude), float(longitude), float(hotel.latitude), float(hotel.longtude)) <= float(distance_range):
                     nearby_hotels.append(hotel)
             serializer = HotelSerializer(hotels, many=True)    
             return Response(serializer.data, status=status.HTTP_200_OK)
-           
+        
         else:
             place = get_object_or_404(VisitablePlace, id=id)
             place_latitude = place.latitude
@@ -90,7 +95,6 @@ class NearByHotelsView(APIView):
                     nearby_hotels.append(hotel)
             serializer = HotelSerializer(hotels, many=True)    
             return Response(serializer.data, status=status.HTTP_200_OK)
-
 
 class NearbyTouristPlacesView(APIView):
     def get(self, request):
@@ -111,3 +115,30 @@ class NearbyTouristPlacesView(APIView):
             # Serialize the nearby places and return the response
         serializer = VisitablePlaceSerializer(nearby_places, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+def send_email(subject, message, recipients):
+	    send_mail(
+    		subject=subject,
+    		message=message,
+    		from_email=settings.EMAIL_HOST_USER,
+    		recipient_list=recipients)   
+  
+class SiteReccomendationView(APIView):
+   def post(self, request):
+       data = request.data.copy()
+       user = CustomUser.objects.get(email='abdi@gmail.com')
+       serializer = RecommendatiomSerializer(data=data)
+       if serializer.is_valid():
+           serializer.save(user=user)
+           send_email('New Recommendation form ', data.get('text_description'), ['inventorabdi@gmail.com'])
+           return Response({'data':'created'}, status=status.HTTP_200_OK)
+           
+class DamageRecommendationView(APIView):
+    def post(self, request):
+        user = CustomUser.objects.get(email='abdi@gmail.com')
+        data = request.data.copy()
+        serializer = DamagereportSerializer(data = data)
+        
+        if serializer.is_valid():
+            serializer.save(user=user)
+        return Response({'data':'created'}, status=status.HTTP_200_OK)

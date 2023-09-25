@@ -33,6 +33,26 @@ class Hotel(models.Model):
     description = models.TextField()
     photo = models.ImageField(upload_to='hotels/images')
 
-
 class SiteReccomendation(models.Model):
-    pass
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True)
+    region = models.CharField(max_length=100, null=True, blank=True)
+    zone = models.CharField(max_length=100,null=True, blank=True)
+    latitude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
+    text_description = models.TextField(null=True, blank=True)
+    image = models.ImageField(upload_to='suggestions/image', blank=True, null=True)
+    
+    #nullable feild
+#
+class DamageReport(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    region = models.CharField(max_length=100, null=True, blank=True)
+    zone = models.CharField(max_length=100,null=True, blank=True)
+    latitude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
+    text_description = models.TextField(null=True, blank=True)
+    image = models.ImageField(upload_to='suggestions/image', null=True, blank=True)
+    
+    
+    
+

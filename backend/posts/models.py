@@ -3,7 +3,6 @@ from accounts.models import CustomUser
 from places.models import VisitablePlace
 # Create your models here.
 
-
 class VisitorStory(models.Model):
     user  = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     place = models.ForeignKey(VisitablePlace, on_delete=models.CASCADE)

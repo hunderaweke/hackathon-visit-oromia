@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import VisitablePlace, Hotel
+from .models import VisitablePlace, Hotel, SiteReccomendation, DamageReport
 from accounts.serializers import CustomUserSerializer
 
 class VisitablePlaceSerializer(serializers.ModelSerializer):
@@ -39,4 +39,14 @@ class HotelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Hotel
         fields = '__all__'
-   
+        
+
+class RecommendatiomSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SiteReccomendation
+        exclude = ['user']
+        
+class DamagereportSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DamageReport
+        exclude = 'user'
