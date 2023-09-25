@@ -11,10 +11,10 @@ interface props{
 const PLaceCard = ({img, title, description, distance, url}: props) => {
 
   return (
-    <div className={`m-3 p-2 ${styles.card}`}>
+    <div className={`m-3 p-2 overflow-hidden ${styles.card}`}>
       <img src={img} width={"100%"} className={`${styles.cardImg}`} />
       <h3 className="my-2">{title}</h3>
-      <p>
+      <p className={`overflow-hidden ${styles.description}`}>
        {description}
       </p>
       <p>
