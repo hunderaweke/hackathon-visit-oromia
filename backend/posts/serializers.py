@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from .models import VisitorStory, StoryImage, StoryVideo
-
+from .models import VisitorStory, StoryImage, StoryVideo, GroupTour
+from accounts.serializers import CustomUserSerializer
 class StoryImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = StoryImage
@@ -32,3 +32,11 @@ class VisitorStorySerializer(serializers.ModelSerializer):
             StoryVideo.objects.create(story=story, **video_data)
 
         return story
+    
+    
+class GroupTourSerializer(serializers.ModelSerializer):
+    creator = CustomUserSerializer()
+    visitors = CustomUserSerializer()
+    class Meta:
+        model  = GroupTour
+        fields = '__all__'

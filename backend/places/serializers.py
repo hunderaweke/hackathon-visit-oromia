@@ -9,7 +9,7 @@ class VisitablePlaceSerializer(serializers.ModelSerializer):
     latitude = serializers.CharField()
     longitude = serializers.FloatField()
     category = serializers.CharField()
-    
+    distance = serializers.FloatField()
     class Meta:
         model = VisitablePlace
         fields = '__all__'

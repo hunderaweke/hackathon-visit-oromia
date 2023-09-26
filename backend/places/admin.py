@@ -5,3 +5,4 @@ from .models import *
 admin.site.register(VisitablePlace)
 admin.site.register(PlacePosts)
 admin.site.register(Comment)
+admin.site.register(Hotel)

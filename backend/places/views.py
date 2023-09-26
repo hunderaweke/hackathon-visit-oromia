@@ -116,7 +116,9 @@ class NearbyTouristPlacesView(APIView):
         places = VisitablePlace.objects.all()
             
         for place in places:
-            if haversine_distance(float(latitude), float(longitude), float(place.latitude), float(place.longitude)) <= float(distance_in_km):
+            distance = haversine_distance(float(latitude), float(longitude), float(place.latitude), float(place.longitude)) 
+            if distance <= float(distance_in_km):
+                place.distance = distance
                 nearby_places.append(place)
             
             # Serialize the nearby places and return the response
@@ -152,12 +154,14 @@ class DamageRecommendationView(APIView):
     
 
 class SearchView(APIView):
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [AllowAny]
     def get(self, request):
         query = request.query_params.get('q', '')
 
         # Search VisitablePlace
         visitable_places = VisitablePlace.objects.filter(
-             Q(description__icontains=query)
+             Q(description__icontains=query)|Q(name__icontains=query)|Q(region__icontains=query)|Q(category__icontains=query)
         )
         visitable_place_serializer = VisitablePlaceSerializer(visitable_places, many=True)
 

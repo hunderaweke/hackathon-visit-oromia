@@ -18,8 +18,8 @@ class StoryVideo(models.Model):
     story = models.ForeignKey(VisitorStory, on_delete=models.CASCADE)
 
 class GroupTour(models.Model):
-    #visitors = models.ManyToOneRel(CustomUser)
+    visitors = models.ManyToManyField(CustomUser, related_name='group_tour')
     creator = models.ForeignKey(CustomUser, on_delete=models.DO_NOTHING)
-    tour_date = models.TextField()
+    tour_date = models.DateTimeField(auto_now_add=True)
     description = models.TextField()
     destination_area = models.ForeignKey(VisitablePlace, on_delete=models.CASCADE)

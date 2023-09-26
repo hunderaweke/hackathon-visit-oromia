@@ -4,3 +4,4 @@ from .models import *
 admin.site.register(VisitorStory)
 admin.site.register(StoryImage)
 admin.site.register(StoryVideo)
+admin.site.register(GroupTour)

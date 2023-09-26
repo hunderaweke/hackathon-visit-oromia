@@ -1,6 +1,9 @@
 from django.db import models
 from accounts.models import CustomUser
 
+class PlacePhoto(models.Model):
+    image = models.ImageField(upload_to='places/images')
+    
 class VisitablePlace(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
@@ -8,6 +11,7 @@ class VisitablePlace(models.Model):
     latitude = models.FloatField(max_length=255)
     longitude = models.FloatField()
     category = models.CharField(max_length=255)
+    image = models.ManyToManyField(PlacePhoto, related_name='images')
     
     def __str__(self):
         return self.name
