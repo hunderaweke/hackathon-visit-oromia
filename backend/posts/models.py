@@ -11,11 +11,11 @@ class VisitorStory(models.Model):
     
 class StoryImage(models.Model):
     image = models.ImageField(upload_to='stories/images')
-    story = models.ForeignKey(VisitorStory, on_delete=models.CASCADE)
+    story = models.ForeignKey(VisitorStory, on_delete=models.CASCADE, related_name='image_list')
    
 class StoryVideo(models.Model):
     video = models.FileField(upload_to='stories/videos')
-    story = models.ForeignKey(VisitorStory, on_delete=models.CASCADE)
+    story = models.ForeignKey(VisitorStory, on_delete=models.CASCADE, related_name='vidoe_list')
 
 class GroupTour(models.Model):
     visitors = models.ManyToManyField(CustomUser, related_name='group_tour')

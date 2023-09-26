@@ -31,7 +31,6 @@ class TouristSitesView(generics.ListAPIView):
     serializer_class = VisitablePlaceSerializer
     pagination_class = LimitOffsetPagination
 
-
 class TouristSiteInfoView(APIView):
     authentication_classes = ['JWTAuthentication']
     def get(self, request, **kwargs):
