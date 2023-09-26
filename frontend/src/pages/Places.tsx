@@ -1,8 +1,17 @@
 import PLaceCard from "../components/Places/PlaceCard/PLaceCard";
 import axios from "axios";
-import { MapContainer, TileLayer, useMap, Popup, Marker } from "react-leaflet";
+import { MapContainer, TileLayer, Popup, Marker } from "react-leaflet";
 import { useState, useEffect } from "react";
+import useGeoLocation from "../hooks/useGeoLocation";
+import markerPic from "../assets/images/marker.png";
+import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+const markerIcon = new L.Icon({
+  iconUrl: markerPic,
+  iconSize: [40, 40],
+  iconAnchor: [17, 46], //[left/right, top/bottom]
+  popupAnchor: [0, -46], //[left/right, top/bottom]
+});
 const Places = () => {
   const [places, setPlaces] = useState([]);
   useEffect(() => {
@@ -18,12 +27,15 @@ const Places = () => {
       console.log(error);
     }
   }, []);
+
+  const location = useGeoLocation();
+  console.log(location);
   return (
     <>
       <MapContainer
         scrollWheelZoom={true}
-        center={[50.5, 40.9]}
-        zoom={3}
+        center={[9.145, 40.4897]}
+        zoom={5}
         style={{
           height: "50vh",
           width: "80vw",
@@ -37,20 +49,14 @@ const Places = () => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[40, 40]} draggable={true}>
-          <Popup>
-            Popup Here
-            <img
-              src={`https://visitoromia.org/wp-content/uploads/2023/06/photo_2021-04-21_13-31-40-1.jpg`}
-              style={{ width: "5rem" }}
-              className="rounded-2"
-            />
-          </Popup>
-        </Marker>
-        <Marker position={[60, 40]} />
-        <Marker position={[60, 60]} />
-        <Marker position={[60, 90]} />
-        <Marker position={[40, 90]} />
+        {location.loaded && !location.error && (
+          <Marker
+            icon={markerIcon}
+            position={[location.coordinates.lat, location.coordinates.lng]}
+          >
+            <Popup>Your Postion</Popup>
+          </Marker>
+        )}
       </MapContainer>
       <div className="container">
         <div className="d-flex flex-wrap justify-content-center">
