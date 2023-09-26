@@ -5,12 +5,11 @@ import axios from "axios";
 import logo from "../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 
-
 const schema = z.object({
   email: z
-  .string({ required_error: "Email is Required" })
-  .email({ message: "Invalid email address" })
-  .min(4, { message: "Must be at least 4 characters" }),
+    .string({ required_error: "Email is Required" })
+    .email({ message: "Invalid email address" })
+    .min(4, { message: "Must be at least 4 characters" }),
   password: z.string({ required_error: "Password Must be Filled" }),
   // .min(8, {message: "Password is at Least 8 charactera"})
 });
@@ -28,12 +27,11 @@ const Login = () => {
   const onSubmit = (data: FieldValues) => {
     try {
       axios
-        .post("http://192.168.60.185:5000/accounts/login/", data)
+        .post("http://192.168.137.1:5000/accounts/login/", data)
         .then((res) => {
-          console.log(res.data);
-          navigatation('/places');
+          navigatation("/places");
           localStorage.setItem("refresh", res.data.refresh);
-          localStorage.setItem("access",res.data.access);
+          localStorage.setItem("access", res.data.access);
         });
     } catch (error) {
       console.error(error);

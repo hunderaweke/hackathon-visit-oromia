@@ -1,30 +1,33 @@
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { useNavigate } from "react-router";
-import {useEffect,useState} from 'react';
+import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./header.module.css";
 
-import user_pick from "../../../assets/person/person_1.jpg"
+import user_pick from "../../../assets/person/person_1.jpg";
 
 export const Header = () => {
   const navigation = useNavigate();
-  const [userData,setUserData] = useState(null);
-  const [logggedIn,setLoggedIn] = useState(true);
-  const token = localStorage.getItem('access')
-  useEffect(()=>{
-    try{
-      axios.get('http://192.168.60.185:5000/accounts/visitor_profile/',{headers:{
-        Authorization:`Bearer ${token}`
-      }})
-      .then((res)=>{
-        setUserData(res.data)
-        setLoggedIn(true)
-      })
+  const [userData, setUserData] = useState([]);
+  const [logggedIn, setLoggedIn] = useState(false);
+  const token = localStorage.getItem("access");
+  useEffect(() => {
+    try {
+      axios
+        .get("http://192.168.137.1:5000/accounts/visitor_profile/", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          setUserData(res.data);
+          setLoggedIn(true);
+          console.log(userData);
+        });
+    } catch (error) {
+      console.log(error);
     }
-    catch(error){
-      console.log(error)
-    }
-  },[])
+  }, []);
   return (
     <header className={`${styles.header} py-lg-2 fixed-top z-2 bg-light`}>
       <Container fluid>
@@ -62,33 +65,55 @@ export const Header = () => {
                     ></input>{" "}
                   </form>{" "}
                 </div>
-               { logggedIn ? <button className={`bg-primary ${styles.loggedin_btn}`} onClick={()=>{
-                navigation('/user')
-               }}>
-                {/* <img src={userData && userData?.profile.profile_pictures} alt="" /> */}
-                <img src={user_pick} width={"100%"} style={{borderRadius: "50%"}}/>
-               </button>:
-                <div className="text-end d-flex g-2 ">
-                  {" "}
-                  <button
-                    type="button"
-                    className={`btn btn-outline-dark mx-2 ${styles.loginSignup}`}
-                    onClick={() => {
-                      navigation("/login");
-                    }}
-                  >
-                    Login
-                  </button>
-                  <button
-                    type="button"
-                    className={`btn btn-warning mx-2 ${styles.loginSignup}`}
-                    onClick={() => {
-                      navigation("/signup");
-                    }}
-                  >
-                    Sign-up
-                  </button>
-                </div>}
+                {logggedIn ? (
+                  <div>
+                    <button
+                      className="btn bg-warning text-white mx-3"
+                      onClick={() => {
+                        localStorage.removeItem("access");
+                        localStorage.removeItem("token");
+                        setLoggedIn(false);
+                        navigation("/");
+                      }}
+                    >
+                      Logout
+                    </button>
+                    <button
+                      className={`${styles.loggedin_btn}`}
+                      onClick={() => {
+                        navigation("/user");
+                      }}
+                    >
+                      <img
+                        src={userData.profile.profile_picture}
+                        width={"100%"}
+                        style={{ borderRadius: "50%" }}
+                      />
+                    </button>
+                  </div>
+                ) : (
+                  <div className="text-end d-flex g-2 ">
+                    {" "}
+                    <button
+                      type="button"
+                      className={`btn btn-outline-dark mx-2 ${styles.loginSignup}`}
+                      onClick={() => {
+                        navigation("/login");
+                      }}
+                    >
+                      Login
+                    </button>
+                    <button
+                      type="button"
+                      className={`btn btn-warning mx-2 ${styles.loginSignup}`}
+                      onClick={() => {
+                        navigation("/signup");
+                      }}
+                    >
+                      Sign-up
+                    </button>
+                  </div>
+                )}
               </Nav>
             </Navbar.Collapse>{" "}
           </Navbar>

@@ -1,4 +1,4 @@
-import { FieldValues, useForm} from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import logo from "../../assets/logo.png";
@@ -36,24 +36,31 @@ type FormData = z.infer<typeof schema>;
 // const [validationResult,setValidationResult] = useState("");
 // const Naviagate = useNavigate()
 const Signup = () => {
-   const {
+  const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const onSubmit = (data: FieldValues) => {
-    console.log(data);
-    try{
-      axios.post("http://192.168.60.185:5000/accounts/register/",data)
+    console.log({
+      first_name: data.first_name,
+      email: data.email,
+      password: data.password,
+    });
+    try {
+      axios.post("http://192.168.137.1:5000/accounts/register/", {
+        first_name: data.first_name,
+        email: data.email,
+        password: data.password,
+      });
       // .then((res)=>{
-      
+
       // })
+    } catch (errorr) {
+      console.error(errorr);
     }
-    catch(errorr){
-      console.error(errorr)
-    }
-  }
+  };
 
   return (
     <div

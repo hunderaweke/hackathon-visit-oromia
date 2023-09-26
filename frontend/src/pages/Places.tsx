@@ -24,13 +24,11 @@ const Places = () => {
   const [places, setPlaces] = useState([]);
   const [nearPlaces, setNearPlaces] = useState([]);
   const location = useGeoLocation();
-  console.log(location);
   useEffect(() => {
     axios
-      .get("http://192.168.137.75:5000/places/get_tourist_sites/")
+      .get("http://192.168.137.1:5000/places/get_tourist_sites/")
       .then((res) => {
         setPlaces(res.data.results);
-        console.log(places);
       })
       .catch((error) => {
         console.log("Error fetching places:", error);
@@ -41,7 +39,7 @@ const Places = () => {
     if (location.loaded && !location.error) {
       axios
         .get(
-          `http://192.168.137.75:5000/places/get_nearby_tourist_places/?latitude=${location.coordinates.lat}&longitude=${location.coordinates.lng}&distance=50`
+          `http://192.168.137.1:5000/places/get_nearby_tourist_places/?latitude=${location.coordinates.lat}&longitude=${location.coordinates.lng}&distance=50`
         )
         .then((res) => {
           setNearPlaces(res.data);
