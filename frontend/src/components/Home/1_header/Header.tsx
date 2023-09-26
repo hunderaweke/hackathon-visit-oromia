@@ -47,11 +47,11 @@ export const Header = () => {
                   <Nav.Link className="flex-item text-dark" href="/places">
                     Places
                   </Nav.Link>
-                  <Nav.Link className="flex-item text-dark" href="#">
+                  <Nav.Link className="flex-item text-dark" href="/stories">
                     Story
                   </Nav.Link>
-                  <Nav.Link className="flex-item text-dark" href="#">
-                    Blabla
+                  <Nav.Link className="flex-item text-dark" href="/groups">
+                    Groups
                   </Nav.Link>
                   <form className="col-12 flex-item col-lg-auto mb-3 mb-lg-0 me-lg-3">
                     <input

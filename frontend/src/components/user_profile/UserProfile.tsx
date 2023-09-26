@@ -4,6 +4,7 @@ import YourStory from "./your_story/YourStory";
 import Report from "./Report/Report";
 import SuggestNewPlace from "./suggest_new_place/SuggestNewPlace";
 import AddPost from "./add_post/AddPost";
+import YourGroups from "./YourGroups/YourGroups";
 
 export const UserProfile = () => {
   return (
@@ -38,6 +39,11 @@ export const UserProfile = () => {
               Suggest New Place
             </a>
           </li>
+          <li className="nav-item">
+            <a className="nav-link" data-bs-toggle="tab" href="#groups">
+            Your Groups
+            </a>
+          </li>
         </ul>
 
         <div className="tab-content">
@@ -55,6 +61,9 @@ export const UserProfile = () => {
           </div>
           <div id="suggest" className="container tab-pane fade">
             <SuggestNewPlace />
+          </div>
+          <div id="groups" className="container tab-pane fade">
+            <YourGroups />
           </div>
         </div>
       </div>

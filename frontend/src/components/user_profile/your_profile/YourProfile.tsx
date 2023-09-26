@@ -4,7 +4,7 @@ import profile_img from "../../../assets/person/person_1.jpg";
 
 const YourProfile = () => {
   return (
-    <div className="d-flex flex-wrap ">
+    <div className="d-flex flex-column-reverse flex-md-row py-5">
       <div className="col-12 col-md-8">
         <ul>
           <li className="fs-5 list-unstyled my-4">
