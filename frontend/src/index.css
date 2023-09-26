@@ -86,11 +86,78 @@
          font-display: swap;
          font-style: normal;
   }
+  @font-face {
+    font-family: 'Telma-Variable';
+    src: url('src/assets/fonts/Telma-Variable.woff2') format('woff2'),
+         url('src/assets/fonts/Telma-Variable.woff') format('woff'),
+         url('src/assets/fonts/Telma-Variable.ttf') format('truetype');
+         font-weight: 300 900;
+         font-display: swap;
+         font-style: normal;
+  }
   
-.Regular{
-    font-family: 'CabinetGrotesk-Regular';   
+  
+  @font-face {
+    font-family: 'Telma-Light';
+    src: url('src/assets/fonts/Telma-Light.woff2') format('woff2'),
+         url('src/assets/fonts/Telma-Light.woff') format('woff'),
+         url('src/assets/fonts/Telma-Light.ttf') format('truetype');
+         font-weight: 300;
+         font-display: swap;
+         font-style: normal;
+  }
+  
+  
+  @font-face {
+    font-family: 'Telma-Regular';
+    src: url('src/assets/fonts/Telma-Regular.woff2') format('woff2'),
+         url('src/assets/fonts/Telma-Regular.woff') format('woff'),
+         url('src/assets/fonts/Telma-Regular.ttf') format('truetype');
+         font-weight: 400;
+         font-display: swap;
+         font-style: normal;
+  }
+  
+  
+  @font-face {
+    font-family: 'Telma-Medium';
+    src: url('src/assets/fonts/Telma-Medium.woff2') format('woff2'),
+         url('src/assets/fonts/Telma-Medium.woff') format('woff'),
+         url('src/assets/fonts/Telma-Medium.ttf') format('truetype');
+         font-weight: 500;
+         font-display: swap;
+         font-style: normal;
+  }
+  
+  
+  @font-face {
+    font-family: 'Telma-Bold';
+    src: url('src/assets/fonts/Telma-Bold.woff2') format('woff2'),
+         url('src/assets/fonts/Telma-Bold.woff') format('woff'),
+         url('src/assets/fonts/Telma-Bold.ttf') format('truetype');
+         font-weight: 700;
+         font-display: swap;
+         font-style: normal;
+  }
+  
+  
+  @font-face {
+    font-family: 'Telma-Black';
+    src: url('src/assets/fonts/Telma-Black.woff2') format('woff2'),
+         url('src/assets/fonts/Telma-Black.woff') format('woff'),
+         url('src/assets/fonts/Telma-Black.ttf') format('truetype');
+         font-weight: 900;
+         font-display: swap;
+         font-style: normal;
+  }
+  
+  
+  
+.header{
+    font-family: 'Telma-Bold' !important;  
+    font-size: 7rem; 
 }
-.Bold{
+h1,h2,h3,h4,h5,h6{
     font-family: 'CabinetGrotesk-Bold', sans-serif;
 }
 .Extrabold{
