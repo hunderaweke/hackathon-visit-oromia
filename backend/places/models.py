@@ -12,6 +12,8 @@ class VisitablePlace(models.Model):
     longitude = models.FloatField()
     category = models.CharField(max_length=255)
     image = models.ManyToManyField(PlacePhoto, related_name='images')
+    distance = models.FloatField(null=True, blank=True)
+    image_url = models.URLField(null=True, blank=True)
     
     def __str__(self):
         return self.name
@@ -36,6 +38,9 @@ class Hotel(models.Model):
     longtude =  models.FloatField()
     description = models.TextField()
     photo = models.ImageField(upload_to='hotels/images')
+    
+    def __str__(self):
+        return self.name
 
 class SiteReccomendation(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True)

@@ -35,6 +35,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         return self.email
 
 class Visitor(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     profile_picture = models.ImageField(upload_to='profile_pictures/visitors')
     personal_note = models.TextField()

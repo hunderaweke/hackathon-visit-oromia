@@ -78,8 +78,9 @@ class VisitorProfileView(TokenObtainPairView,APIView):
 
     def get(self, request):
         user = request.user
-        profile = get_object_or_404(Visitor, user_id=user.id)
-        serializer = VisitorSerializer(profile)
+        profile = Visitor.objects.get(user_id=user.id)
+        
+        serializer = VisitorSerializer(profile, context={'request': request})
         userializer = CustomUserSerializer(user)
         data = {}
         data['profile'] = serializer.data

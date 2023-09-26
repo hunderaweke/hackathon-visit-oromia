@@ -12,7 +12,7 @@ class VisitorStory(models.Model):
 class StoryImage(models.Model):
     image = models.ImageField(upload_to='stories/images')
     story = models.ForeignKey(VisitorStory, on_delete=models.CASCADE)
-    
+   
 class StoryVideo(models.Model):
     video = models.FileField(upload_to='stories/videos')
     story = models.ForeignKey(VisitorStory, on_delete=models.CASCADE)

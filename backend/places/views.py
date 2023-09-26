@@ -133,14 +133,22 @@ def send_email(subject, message, recipients):
     		recipient_list=recipients)   
   
 class SiteReccomendationView(APIView):
-   def post(self, request):
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [AllowAny]
+    def get(self, request):
+           recommendations = SiteReccomendation.objects.all()
+           serializer = RecommendatiomSerializer(recommendations, many=True, context={'request': request})
+           return Response(serializer.data, status=status.HTTP_200_OK)
+       
+    def post(self, request):
        data = request.data.copy()
        user = CustomUser.objects.get(email='abdi@gmail.com')
        serializer = RecommendatiomSerializer(data=data)
        if serializer.is_valid():
            serializer.save(user=user)
-           send_email('New Recommendation form ', data.get('text_description'), ['inventorabdi@gmail.com'])
+           #send_email('New Recommendation form ', data.get('text_description'), ['inventorabdi@gmail.com'])
            return Response({'data':'created'}, status=status.HTTP_200_OK)
+    
            
 class DamageRecommendationView(APIView):
     def post(self, request):
