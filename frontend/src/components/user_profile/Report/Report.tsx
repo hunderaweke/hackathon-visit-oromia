@@ -1,83 +1,79 @@
+
+import styles from "./report.module.css";
+
+import React, { ChangeEvent } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-// import axios from "axios";
-
-import styles from './report.module.css'
 
 const schema = z.object({
   name: z.string(),
-  place_image: z.string(),
-  damage_lavel: z.string(),
+  damage_level: z.string(),
   description: z.string(),
+  image: z
+    .object({
+      file: z.instanceof(File).nullable(), 
+    })
+    .nullable(),
 });
 
 type FormData = z.infer<typeof schema>;
 
-const Report = () => {
+const Report: React.FC = () => {
   const {
     register,
     handleSubmit,
-    // formState: { },
-  } = useForm<FormData>({ resolver: zodResolver(schema) });
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
+  });
 
   const onSubmit = (data: FieldValues) => {
     console.log(data);
-    // try {
-    //   axios
-    //     .post("http://192.168.60.185:5000/accounts/login/", data)
-    //     .then((res) => {
-    //       console.log(res.data);
-    //     });
-    // } catch (error) {
-    //   console.error(error);
-    // }
+
+  };
+
+  const handleImage = (e: ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files?.[0];
+    console.log(selectedFile)
+    if (selectedFile) {
+      register("image.file", { value: selectedFile }); 
+    }
   };
 
   return (
-    <form className={`my-5 p-5 ${styles.report}`} onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className={`m-0 my-5 p-2 p-md-5 ${styles.report}`} encType="multipart/form-data">
       <div className="mb-3 mt-3">
-        <div className="py-3">
-          <label className="form-label">Place Name:</label>
-          <input
-            type="name"
-            className="form-control"
-            id="name"
-            {...register("name")}
-          />
-        </div>
-        <div className="py-3">
-          <label className="form-label">Image of the Place:</label>
-          <input
-            type="file"
-            className="form-control"
-            id="place_image"
-            {...register("place_image")}
-          />
-        </div>
-        <div className="py-3">
-          <label className="form-label">Damage Level:</label>
-          <select
-            className="form-control"
-            name="damage_lavel"
-            id="damage_lavel"
-          >
-            <option value="normal">Normal</option>
-            <option value="medium">Medium</option>
-            <option value="extrem">Extrem</option>
-          </select>
-        </div>
-        <div className="py-3">
-          <label className="form-label">Description about the place:</label>
-          <textarea
-            className="form-control"
-            id="description"
-            rows={5}
-            {...register("description")}
-          />
-        </div>
+        <label htmlFor="name" className="form-label">Place Name:</label>
+        <input type="text" id="name" {...register("name")} className="form-control" />
+        {errors.name && <p>{errors.name.message}</p>}
       </div>
-      <button className="btn btn-primary">Send </button>
+      <div className="mb-3 mt-3">
+        <label htmlFor="damage_level" className="form-label">Damage Level:</label>
+        <select id="damage_level" {...register("damage_level")} className="form-control">
+          <option value="normal">Normal</option>
+          <option value="medium">Medium</option>
+          <option value="extreme">Extreme</option>
+        </select>
+        {errors.damage_level && <p>{errors.damage_level.message}</p>}
+      </div>
+      <div className="mb-3 mt-3">
+        <label htmlFor="description" className="form-label">Description about the place:</label>
+        <textarea id="description" rows={5} {...register("description")} className="form-control" />
+        {errors.description && <p>{errors.description.message}</p>}
+      </div>
+      <div className="mb-3 mt-3" >
+        <label htmlFor="image" className="form-label">Image of the Place:</label>
+        <input
+          type="file"
+          id="image"
+          onChange={handleImage}
+          accept="image/*" 
+          className="form-control"
+        />
+        {errors.image && <p>{errors.image.file?.message}</p>}
+      </div>
+      <button type="submit" className="btn btn-primary">Submit</button>
     </form>
   );
 };
