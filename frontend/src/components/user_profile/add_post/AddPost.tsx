@@ -3,18 +3,16 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 // import axios from "axios";
 
-import styles from './report.module.css'
+import styles from './add.module.css'
 
 const schema = z.object({
-  name: z.string(),
   place_image: z.string(),
-  damage_lavel: z.string(),
   description: z.string(),
 });
 
 type FormData = z.infer<typeof schema>;
 
-const Report = () => {
+const AddPost = () => {
   const {
     register,
     handleSubmit,
@@ -35,17 +33,8 @@ const Report = () => {
   };
 
   return (
-    <form className={`my-5 p-5 ${styles.report}`} onSubmit={handleSubmit(onSubmit)}>
+    <form className={`my-5 p-5 ${styles.add}`} onSubmit={handleSubmit(onSubmit)}>
       <div className="mb-3 mt-3">
-        <div className="py-3">
-          <label className="form-label">Place Name:</label>
-          <input
-            type="name"
-            className="form-control"
-            id="name"
-            {...register("name")}
-          />
-        </div>
         <div className="py-3">
           <label className="form-label">Image of the Place:</label>
           <input
@@ -54,18 +43,6 @@ const Report = () => {
             id="place_image"
             {...register("place_image")}
           />
-        </div>
-        <div className="py-3">
-          <label className="form-label">Damage Level:</label>
-          <select
-            className="form-control"
-            name="damage_lavel"
-            id="damage_lavel"
-          >
-            <option value="normal">Normal</option>
-            <option value="medium">Medium</option>
-            <option value="extrem">Extrem</option>
-          </select>
         </div>
         <div className="py-3">
           <label className="form-label">Description about the place:</label>
@@ -77,9 +54,9 @@ const Report = () => {
           />
         </div>
       </div>
-      <button className="btn btn-primary">Send </button>
+      <button className="btn btn-primary">Post Story </button>
     </form>
   );
 };
 
-export default Report;
+export default AddPost;

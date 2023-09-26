@@ -3,18 +3,21 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 // import axios from "axios";
 
-import styles from './report.module.css'
+import styles from './suggest.module.css'
 
 const schema = z.object({
   name: z.string(),
   place_image: z.string(),
   damage_lavel: z.string(),
   description: z.string(),
+  region: z.string(),
+  woreda: z.string(),
+
 });
 
 type FormData = z.infer<typeof schema>;
 
-const Report = () => {
+const SuggestNewPlace = () => {
   const {
     register,
     handleSubmit,
@@ -35,9 +38,10 @@ const Report = () => {
   };
 
   return (
-    <form className={`my-5 p-5 ${styles.report}`} onSubmit={handleSubmit(onSubmit)}>
-      <div className="mb-3 mt-3">
-        <div className="py-3">
+    <form className={`my-5 p-5 ${styles.suggest}`} onSubmit={handleSubmit(onSubmit)}>
+      <div className="row">
+        <div className="mb-3 mt-3">
+        <div className="col py-3">
           <label className="form-label">Place Name:</label>
           <input
             type="name"
@@ -46,15 +50,36 @@ const Report = () => {
             {...register("name")}
           />
         </div>
-        <div className="py-3">
+        <div className="col py-3">
           <label className="form-label">Image of the Place:</label>
           <input
             type="file"
             className="form-control"
             id="place_image"
-            {...register("place_image")}
+            {...register("region")}
           />
         </div>
+      </div>
+      <div className="row">
+      <div className="col py-3">
+          <label className="form-label">Region:</label>
+          <input
+            type="name"
+            className="form-control"
+            id="region"
+            {...register("region")}
+          />
+        </div>
+      <div className="col py-3">
+          <label className="form-label">Woreda: </label>
+          <input
+            type="name"
+            className="form-control"
+            id="woreda"
+            {...register("woreda")}
+          />
+        </div>
+      </div>
         <div className="py-3">
           <label className="form-label">Damage Level:</label>
           <select
@@ -82,4 +107,5 @@ const Report = () => {
   );
 };
 
-export default Report;
+export default SuggestNewPlace;
+
