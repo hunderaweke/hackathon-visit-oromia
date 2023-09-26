@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./header.module.css";
+import logo from "../../../assets/logo.png";
 
 import user_pick from "../../../assets/person/person_1.jpg";
 
@@ -34,7 +35,9 @@ export const Header = () => {
         <Container>
           <Navbar expand="lg">
             <Navbar.Brand className={`${styles.navBrand}`}>
-              <Nav.Link href="/">Imaltuu</Nav.Link>
+              <Nav.Link href="/">
+                <img src={logo} alt="" width={"100rem"} />
+              </Nav.Link>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="navbar-nav" />
             <Navbar.Collapse id="navbar-nav">
@@ -68,7 +71,7 @@ export const Header = () => {
                 {logggedIn ? (
                   <div>
                     <button
-                      className="btn bg-warning text-white mx-3"
+                      className="btn bg-danger text-white mx-3"
                       onClick={() => {
                         localStorage.removeItem("access");
                         localStorage.removeItem("token");
@@ -105,7 +108,7 @@ export const Header = () => {
                     </button>
                     <button
                       type="button"
-                      className={`btn btn-warning mx-2 ${styles.loginSignup}`}
+                      className={`btn btn-danger mx-2 ${styles.loginSignup}`}
                       onClick={() => {
                         navigation("/signup");
                       }}
