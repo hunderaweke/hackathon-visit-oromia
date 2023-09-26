@@ -45,7 +45,6 @@ export const UserProfile = () => {
             </a>
           </li>
         </ul>
-
         <div className="tab-content">
           <div id="Profile" className="container tab-pane active">
             <YourProfile />

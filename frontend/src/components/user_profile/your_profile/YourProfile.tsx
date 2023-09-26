@@ -24,7 +24,7 @@ const YourProfile = () => {
           </li>
           <li className="fs-5 list-unstyled my-4">
             Your Stories:{" "}
-            <span className={`${styles.abc} ${styles.circle_story}`}>14</span>
+            <span className={`${styles.abc} ${styles.circle_story}`}>6</span>
           </li>
         </ul>
       </div>

@@ -27,7 +27,7 @@ const Places = () => {
   console.log(location);
   useEffect(() => {
     axios
-      .get("http://192.168.14.185:5000/places/get_tourist_sites/")
+      .get("http://192.168.137.75:5000/places/get_tourist_sites/")
       .then((res) => {
         setPlaces(res.data.results);
         console.log(places);
@@ -41,7 +41,7 @@ const Places = () => {
     if (location.loaded && !location.error) {
       axios
         .get(
-          `http://192.168.14.185:5000/places/get_nearby_tourist_places/?latitude=${location.coordinates.lat}&longitude=${location.coordinates.lng}&distance=50`
+          `http://192.168.137.75:5000/places/get_nearby_tourist_places/?latitude=${location.coordinates.lat}&longitude=${location.coordinates.lng}&distance=50`
         )
         .then((res) => {
           setNearPlaces(res.data);

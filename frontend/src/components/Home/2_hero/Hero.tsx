@@ -20,9 +20,9 @@ function HeroContent() {
           </h1>
           <div className="text col-12 col-md-7">
             <p className="text-dark my-2 text-center intro-text">
-              Welcome to Lorem ipsum dolor sit amet, consectetur adipisicing
-              elit. Impedit dicta sapiente mollitia expedita quaerat consectetur
-              earum. Aperiam quam natus ducimus.
+              Welcome to Imaltu Tourism Platform the best Place for visiting
+              Oromia and Ethiopia with Your friends and family even in your own
+              group.
             </p>
           </div>
           <button

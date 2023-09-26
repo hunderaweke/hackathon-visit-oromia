@@ -12,6 +12,7 @@
 }
 .cardImg{
     border-radius: 0.5rem;
+    max-height: 10rem;
 }
 .cardDistance{
     color: #3366ff;
