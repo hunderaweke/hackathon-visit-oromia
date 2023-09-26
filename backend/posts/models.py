@@ -16,4 +16,10 @@ class StoryImage(models.Model):
 class StoryVideo(models.Model):
     video = models.FileField(upload_to='stories/videos')
     story = models.ForeignKey(VisitorStory, on_delete=models.CASCADE)
-    
+
+class GroupTour(models.Model):
+    visitors = models.ManyToOneRel(CustomUser)
+    creator = models.ForeignKey(CustomUser, on_delete=models.DO_NOTHING)
+    tour_date = models.TextField()
+    description = models.TextField()
+    destination_area = models.ForeignKey(VisitablePlace, on_delete=models.CASCADE)

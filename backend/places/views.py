@@ -2,10 +2,10 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework import status
-from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from django.shortcuts import get_object_or_404
-from .serializers import VisitablePlaceSerializer, HotelSerializer, RecommendatiomSerializer, DamagereportSerializer, CommentSerializer, RecommendatiomSerializer, DamagereportSerializer
+from .serializers import VisitablePlaceSerializer, HotelSerializer, RecommendatiomSerializer, DamagereportSerializer, CommentSerializer, RecommendatiomSerializer
 from places.serializers import PlacePostsSerializer
 from .models import VisitablePlace, PlacePosts, Comment, Hotel, SiteReccomendation, DamageReport
 from posts.models import VisitorStory, StoryImage, StoryVideo
@@ -73,6 +73,8 @@ class TouristSiteCommentsView(APIView):
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 class NearByHotelsView(APIView):
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [AllowAny]
     def get(self, request):
         id = request.request.query_params.get('place_id')
         latitude = request.query_params.get('latitude')
@@ -100,6 +102,8 @@ class NearByHotelsView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
 
 class NearbyTouristPlacesView(APIView):
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [AllowAny]
     def get(self, request):
         latitude = request.query_params.get('latitude')
         longitude = request.query_params.get('longitude')
@@ -112,7 +116,7 @@ class NearbyTouristPlacesView(APIView):
         places = VisitablePlace.objects.all()
             
         for place in places:
-            if haversine_distance(float(latitude), float(longitude), float(place.longitude), float(place.longitude)) <= float(distance_in_km):
+            if haversine_distance(float(latitude), float(longitude), float(place.latitude), float(place.longitude)) <= float(distance_in_km):
                 nearby_places.append(place)
             
             # Serialize the nearby places and return the response
@@ -147,7 +151,6 @@ class DamageRecommendationView(APIView):
         return Response({'data':'created'}, status=status.HTTP_200_OK)
     
 
-
 class SearchView(APIView):
     def get(self, request):
         query = request.query_params.get('q', '')
@@ -159,15 +162,15 @@ class SearchView(APIView):
         visitable_place_serializer = VisitablePlaceSerializer(visitable_places, many=True)
 
         # Search PlacePosts
-        place_posts = PlacePosts.objects.filter(text__icontains=query)
+        place_posts = PlacePosts.objects.filter(Q(text__icontains=query))
         place_posts_serializer = PlacePostsSerializer(place_posts, many=True)
 
         # Search Comment
-        comments = Comment.objects.filter(text__icontains=query)
+        comments = Comment.objects.filter(Q(text__icontains=query))
         comments_serializer = CommentSerializer(comments, many=True)
 
         # Search Hotel
-        hotels = Hotel.objects.filter(name__icontains=query)
+        hotels = Hotel.objects.filter(Q(name__icontains=query))
         hotels_serializer = HotelSerializer(hotels, many=True)
 
         # Search SiteReccomendation
@@ -181,6 +184,11 @@ class SearchView(APIView):
             Q(region__icontains=query) | Q(zone__icontains=query) | Q(text_description__icontains=query)
         )
         damage_reports_serializer = DamagereportSerializer(damage_reports, many=True)
+
+        visitable_places = VisitablePlace.objects.filter(
+             Q(description__icontains=query)
+        )
+        visitable_place_serializer = VisitablePlaceSerializer(visitable_places, many=True)
 
         results = {
             'visitable_places': visitable_place_serializer.data,

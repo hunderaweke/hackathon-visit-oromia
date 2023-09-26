@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import VisitablePlace, Hotel, SiteReccomendation, DamageReport
+from .models import VisitablePlace, Hotel, SiteReccomendation, DamageReport,Comment, PlacePosts
 from accounts.serializers import CustomUserSerializer
 
 class VisitablePlaceSerializer(serializers.ModelSerializer):
@@ -16,18 +16,16 @@ class VisitablePlaceSerializer(serializers.ModelSerializer):
 
 
 class PlacePostsSerializer(serializers.ModelSerializer):
-    place = VisitablePlaceSerializer()
-    text =  serializers.CharField()
-    photo = serializers.ImageField()
-    video = serializers.FileField()
+    class Meta:
+        name = PlacePosts
+        fields = '__all__'
     
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    user = CustomUserSerializer()
-    text =  serializers.CharField()
-    photo = serializers.ImageField()
-    commented_user = serializers.DateTimeField()
+    class Meta:
+        model= Comment
+        fields = '__all__'
 
 class HotelSerializer(serializers.ModelSerializer):
     name = serializers.CharField()

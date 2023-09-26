@@ -9,7 +9,8 @@ def haversine_distance(lat1, lon1, lat2, lon2):
         c = 2 * asin(sqrt(a))
         distance = r * c
         return distance
-
+if __name__ =='__main__':
+    print(haversine_distance(7.1, 33, 7.1, 34))
 
 ''' 
 
