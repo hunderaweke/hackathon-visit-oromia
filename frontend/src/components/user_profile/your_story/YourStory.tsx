@@ -32,7 +32,7 @@ function Story({ src, name, caption, country, date }: props) {
 }
 const YourStory = () => {
   return (
-    <div className="contaier-fluid d-flex flex-wrap gap-3 ">
+    <div className="contaier-fluid d-flex my-3 flex-wrap gap-3 ">
       <Story
         id="a"
         name="Kiya kebe"

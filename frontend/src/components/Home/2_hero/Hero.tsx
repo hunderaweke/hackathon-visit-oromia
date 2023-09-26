@@ -15,7 +15,7 @@ function HeroContent() {
 
     <div className="container d-flex align-items-center justify-content-center">
       <div className="d-flex flex-column align-items-center">
-          <h1 className="text-dark text-center my-3 lead_text">Let's Make Traveling Fun</h1>
+          <h1 className="text-dark text-center my-3 lead_text Extrabold">Let's Make Traveling Fun</h1>
           <div className="text col-12 col-md-7">
             <p className="text-dark my-2 text-center">
               Welcome to Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit dicta sapiente mollitia expedita quaerat

@@ -2,6 +2,8 @@ import { Header } from "../Home/1_header/Header";
 import YourProfile from "./your_profile/YourProfile";
 import YourStory from "./your_story/YourStory";
 import Report from "./Report/Report";
+import SuggestNewPlace from "./suggest_new_place/SuggestNewPlace";
+import AddPost from "./add_post/AddPost";
 
 export const UserProfile = () => {
   return (
@@ -22,8 +24,18 @@ export const UserProfile = () => {
             </a>
           </li>
           <li className="nav-item">
+            <a className="nav-link" data-bs-toggle="tab" href="#addStory">
+              Add Story
+            </a>
+          </li>
+          <li className="nav-item">
             <a className="nav-link" data-bs-toggle="tab" href="#report">
               Report
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" data-bs-toggle="tab" href="#suggest">
+              Suggest New Place
             </a>
           </li>
         </ul>
@@ -35,8 +47,14 @@ export const UserProfile = () => {
           <div id="Story" className="container tab-pane fade">
             <YourStory />
           </div>
+          <div id="addStory" className="container tab-pane fade">
+            <AddPost />
+          </div>
           <div id="report" className="container tab-pane fade">
             <Report />
+          </div>
+          <div id="suggest" className="container tab-pane fade">
+            <SuggestNewPlace />
           </div>
         </div>
       </div>

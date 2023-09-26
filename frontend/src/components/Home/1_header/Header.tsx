@@ -3,10 +3,13 @@ import { useNavigate } from "react-router";
 import {useEffect,useState} from 'react';
 import axios from "axios";
 import styles from "./header.module.css";
+
+import user_pick from "../../../assets/person/person_1.jpg"
+
 export const Header = () => {
   const navigation = useNavigate();
   const [userData,setUserData] = useState(null);
-  const [logggedIn,setLoggedIn] = useState(false);
+  const [logggedIn,setLoggedIn] = useState(true);
   const token = localStorage.getItem('access')
   useEffect(()=>{
     try{
@@ -38,16 +41,16 @@ export const Header = () => {
                 <div
                   className={`w-lg-75  d-lg-flex justify-content-lg-center mx-lg-auto   ${styles.navLink}`}
                 >
-                  <Nav.Link className="flex-lg-item" href="/">
+                  <Nav.Link className="flex-item text-dark" href="/">
                     Home
                   </Nav.Link>
-                  <Nav.Link className="flex-item" href="/places">
+                  <Nav.Link className="flex-item text-dark" href="/places">
                     Places
                   </Nav.Link>
-                  <Nav.Link className="flex-item" href="#">
+                  <Nav.Link className="flex-item text-dark" href="#">
                     Story
                   </Nav.Link>
-                  <Nav.Link className="flex-item" href="#">
+                  <Nav.Link className="flex-item text-dark" href="#">
                     Blabla
                   </Nav.Link>
                   <form className="col-12 flex-item col-lg-auto mb-3 mb-lg-0 me-lg-3">
@@ -59,11 +62,11 @@ export const Header = () => {
                     ></input>{" "}
                   </form>{" "}
                 </div>
-               { logggedIn ? <button onClick={()=>{
+               { logggedIn ? <button className={`bg-primary ${styles.loggedin_btn}`} onClick={()=>{
                 navigation('/user')
                }}>
-                <img src={userData && userData?.profile.profile_pictures} alt="" />
-                <p>{userData.user.email}</p>
+                {/* <img src={userData && userData?.profile.profile_pictures} alt="" /> */}
+                <img src={user_pick} width={"100%"} style={{borderRadius: "50%"}}/>
                </button>:
                 <div className="text-end d-flex g-2 ">
                   {" "}
