@@ -18,7 +18,7 @@ class StoryVideo(models.Model):
     story = models.ForeignKey(VisitorStory, on_delete=models.CASCADE)
 
 class GroupTour(models.Model):
-    visitors = models.ManyToOneRel(CustomUser)
+    #visitors = models.ManyToOneRel(CustomUser)
     creator = models.ForeignKey(CustomUser, on_delete=models.DO_NOTHING)
     tour_date = models.TextField()
     description = models.TextField()
