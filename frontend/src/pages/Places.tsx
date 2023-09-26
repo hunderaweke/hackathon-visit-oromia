@@ -1,45 +1,68 @@
-import PLaceCard from "../components/Places/PlaceCard/PLaceCard";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { MapContainer, TileLayer, Popup, Marker } from "react-leaflet";
-import { useState, useEffect } from "react";
 import useGeoLocation from "../hooks/useGeoLocation";
-import markerPic from "../assets/images/marker.png";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import PLaceCard from "../components/Places/PlaceCard/PLaceCard";
+import markerPic from "../assets/images/marker.png";
+import nearMarkerPic from "../assets/images/location.png";
+
+const nearMarkerIcon = new L.Icon({
+  iconUrl: nearMarkerPic,
+  iconSize: [40, 40],
+  iconAnchor: [17, 46],
+  popupAnchor: [0, -46],
+});
 const markerIcon = new L.Icon({
   iconUrl: markerPic,
   iconSize: [40, 40],
-  iconAnchor: [17, 46], //[left/right, top/bottom]
-  popupAnchor: [0, -46], //[left/right, top/bottom]
+  iconAnchor: [17, 46],
+  popupAnchor: [0, -46],
 });
 const Places = () => {
   const [places, setPlaces] = useState([]);
-  useEffect(() => {
-    try {
-      axios
-        // .get("http://192.168.60.185:5000/places/get_tourist_sites/")
-        .get("http://127.0.0.1:8000/places/get_tourist_sites/")
-        .then((res) => {
-          setPlaces(res.data.results);
-          console.log(places);
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
-
+  const [nearPlaces, setNearPlaces] = useState([]);
   const location = useGeoLocation();
   console.log(location);
+  useEffect(() => {
+    axios
+      .get("http://192.168.14.185:5000/places/get_tourist_sites/")
+      .then((res) => {
+        setPlaces(res.data.results);
+        console.log(places);
+      })
+      .catch((error) => {
+        console.log("Error fetching places:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (location.loaded && !location.error) {
+      axios
+        .get(
+          `http://192.168.14.185:5000/places/get_nearby_tourist_places/?latitude=${location.coordinates.lat}&longitude=${location.coordinates.lng}&distance=50`
+        )
+        .then((res) => {
+          setNearPlaces(res.data);
+        })
+        .catch((error) => {
+          console.log("Error fetching nearby places:", error);
+        });
+    }
+  }, [location]);
+
   return (
     <>
       <MapContainer
         scrollWheelZoom={true}
-        center={[9.145, 40.4897]}
-        zoom={5}
+        center={[9.007, 38.7678]}
+        zoom={12}
         style={{
-          height: "50vh",
+          height: "70vh",
           width: "80vw",
-          marginTop: "8rem",
+          marginTop: "6rem",
+          marginBottom: "4rem",
           marginInline: "auto",
           zIndex: "0",
         }}
@@ -54,19 +77,29 @@ const Places = () => {
             icon={markerIcon}
             position={[location.coordinates.lat, location.coordinates.lng]}
           >
-            <Popup>Your Postion</Popup>
+            <Popup>Your Position</Popup>
           </Marker>
         )}
+        {nearPlaces.map((place) => (
+          <Marker
+            key={place.id}
+            icon={nearMarkerIcon}
+            position={[place.latitude, place.longitude]}
+          >
+            <Popup>{place.name}</Popup>
+          </Marker>
+        ))}
       </MapContainer>
       <div className="container">
         <div className="d-flex flex-wrap justify-content-center">
           {places.map((data) => (
             <PLaceCard
+              key={data.id}
               title={data.name}
-              img={"sjhfsjfkdsf"}
+              img={data.image_url}
               description={data.description}
               distance={data.latitude}
-              url={`/${data.id}/detail`}
+              url={`/detail`}
             />
           ))}
         </div>

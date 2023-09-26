@@ -1,6 +1,6 @@
 .card{
     width: 18rem !important;
-    max-height: 24rem;
+    max-height: 34rem;
     background-color: rgb(255, 255, 255);
     border: 1px solid gray;
     border-radius: 10px;
@@ -17,5 +17,5 @@
     color: #3366ff;
 }
 .description{
-    max-height: 7rem;
+    height: 5rem;
 }
