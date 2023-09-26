@@ -155,10 +155,13 @@
   
 .header{
     font-family: 'Telma-Bold' !important;  
-    font-size: 7rem; 
+    font-size :calc(1vw + 60px);
 }
-h1,h2,h3,h4,h5,h6{
+*{
     font-family: 'CabinetGrotesk-Bold', sans-serif;
+}
+p{
+  font-family: 'CabinetGrotesk-Regular';
 }
 .Extrabold{
     font-family: 'CabinetGrotesk-Extrabold';

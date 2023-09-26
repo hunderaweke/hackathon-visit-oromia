@@ -15,7 +15,9 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-
+.intro-text{
+  font-size: x-large;
+}
 .reques-button {
   position: relative;
   font-size: 16px;  
